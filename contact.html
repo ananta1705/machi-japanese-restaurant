@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth" id="top">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontak & Reservasi Meja | Machi Ramen & Matcha</title>
+  <meta name="description" content="Hubungi Machi Ramen & Matcha di Senopati Jakarta Selatan. Lakukan reservasi meja online, pesan delivery via WhatsApp, dan lihat informasi lokasi lengkap.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%23E8401C'/><text x='50' y='72' font-size='65' font-family='serif' font-weight='900' fill='white' text-anchor='middle'>町</text></svg>">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Kontak & Reservasi Meja | Machi Ramen & Matcha">
+  <meta property="og:description" content="Reservasi meja makan siang & malam di Machi Senopati, Jakarta Selatan. Buka setiap hari 10.00–22.00 WIB.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+JP:wght@600;700;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=Zen+Antique&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN + Config (Required build tool for animations & styling) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'media',
+      theme: {
+        extend: {
+          colors: {
+            washi: '#FFF4EA',
+            sumi: '#1A1A1A',
+            aka: '#E8401C',
+            'aka-deep': '#B5300C',
+            ai: '#1B2F8F',
+            'ai-deep': '#13226B',
+            matcha: { DEFAULT: '#7A9E3B', light: '#DDE8C3', dark: '#4F6B22' },
+            sakura: '#F6C6D0',
+            kin: '#C9A24B'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['"Plus Jakarta Sans"', 'sans-serif'],
+            kanji: ['"Noto Serif JP"', '"Zen Antique"', 'serif']
+          },
+          keyframes: {
+            slurp:       { '0%,100%': { transform: 'translateY(0) scaleY(1)' }, '50%': { transform: 'translateY(-10px) scaleY(1.2)' } },
+            tilt:        { '0%,100%': { transform: 'rotate(0deg)' }, '50%': { transform: 'rotate(-24deg) translateY(-5px)' } },
+            scene1:      { '0%,45%': { opacity: '1' }, '50%,100%': { opacity: '0' } },
+            scene2:      { '0%,45%': { opacity: '0' }, '50%,95%': { opacity: '1' }, '100%': { opacity: '0' } },
+            pop:         { '0%,100%': { transform: 'scale(0)' }, '30%,70%': { transform: 'scale(1)' } },
+            fill:        { from: { width: '0%' }, to: { width: '100%' } },
+            'fade-out':  { to: { opacity: '0', visibility: 'hidden', pointerEvents: 'none' } },
+            unlock:      { to: { overflow: 'auto' } },
+            sway:        { '0%,100%': { transform: 'rotate(-2deg)' }, '50%': { transform: 'rotate(2deg)' } },
+          },
+          animation: {
+            slurp: 'slurp 0.4s ease-in-out infinite',
+            tilt: 'tilt 0.8s ease-in-out infinite',
+            scene1: 'scene1 1.6s linear infinite',
+            scene2: 'scene2 1.6s linear infinite',
+            pop: 'pop 0.8s ease-in-out infinite',
+            fill: 'fill 1.6s linear forwards',
+            'fade-out': 'fade-out 0.3s ease-in 1.7s forwards',
+            unlock: 'unlock 0s 1.7s forwards',
+            sway: 'sway 2s ease-in-out infinite',
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./css/output.css">
+  <link rel="stylesheet" href="./css/custom.css">
+</head>
+<body class="overflow-hidden motion-safe:animate-unlock motion-reduce:overflow-auto bg-washi dark:bg-sumi text-sumi dark:text-washi min-h-screen flex flex-col font-sans selection:bg-aka selection:text-white">
+
+  <!-- ================= LOADING SCREEN (100% TAILWIND, ZERO CUSTOM JS/CSS KEYFRAMES, GPU-ACCELERATED) ================= -->
+  <div id="preloader" role="status" aria-live="polite" aria-label="Memuat halaman Machi"
+       class="fixed inset-0 z-[9999] flex flex-col items-center justify-center gap-6 bg-washi dark:bg-sumi
+              transform-gpu will-change-[opacity]
+              animate-fade-out motion-reduce:[animation-duration:0.2s] motion-reduce:[animation-delay:0.4s]">
+
+    <!-- Noren merah di atas, bergoyang pelan -->
+    <div aria-hidden="true" class="absolute inset-x-0 top-0 flex justify-center gap-2">
+      <div class="h-24 w-16 origin-top rounded-b-xl bg-aka motion-safe:animate-sway [animation-delay:0s]"></div>
+      <div class="h-24 w-16 origin-top rounded-b-xl bg-aka motion-safe:animate-sway [animation-delay:.15s]"></div>
+      <div class="h-24 w-16 origin-top rounded-b-xl bg-aka motion-safe:animate-sway [animation-delay:.3s]"></div>
+      <div class="h-24 w-16 origin-top rounded-b-xl bg-aka motion-safe:animate-sway [animation-delay:.45s]"></div>
+      <div class="h-24 w-16 origin-top rounded-b-xl bg-aka motion-safe:animate-sway [animation-delay:.6s]"></div>
+    </div>
+
+    <!-- Panggung ilustrasi -->
+    <figure aria-hidden="true" class="relative size-64 sm:size-80">
+
+      <!-- ADEGAN 1: orang menyeruput ramen -->
+      <svg viewBox="0 0 320 320" class="absolute inset-0 motion-safe:animate-scene1 motion-reduce:opacity-100">
+        <g>
+          <!-- Badan & Pakaian Merah Machi -->
+          <path d="M110 240 C110 210, 130 190, 160 190 C190 190, 210 210, 210 240 Z" class="fill-aka" />
+          <path d="M145 190 L160 215 L175 190 Z" class="fill-washi" />
+
+          <!-- Kepala / Wajah -->
+          <circle cx="160" cy="140" r="50" class="fill-[#FFE0BD]" />
+
+          <!-- Rambut Chibi -->
+          <path d="M110 140 C110 95, 210 95, 210 140 C200 115, 120 115, 110 140 Z" class="fill-sumi" />
+
+          <!-- Tenugui / Ikat Kepala Merah -->
+          <path d="M106 122 C120 112, 200 112, 214 122 L212 134 C198 124, 122 124, 108 134 Z" class="fill-aka" />
+          <rect x="154" y="122" width="12" height="10" rx="2" class="fill-washi" />
+
+          <!-- Mata Menyipit Senang (^^) -->
+          <path d="M132 140 Q140 132 148 140" class="stroke-sumi stroke-[3.5] fill-none stroke-linecap-round" />
+          <path d="M172 140 Q180 132 188 140" class="stroke-sumi stroke-[3.5] fill-none stroke-linecap-round" />
+
+          <!-- Pipi Menggembung Kiri & Kanan (animate-pulse, beda delay) -->
+          <circle cx="128" cy="150" r="10" class="fill-red-300 opacity-80 motion-safe:animate-pulse [animation-delay:0s]" />
+          <circle cx="192" cy="150" r="10" class="fill-red-300 opacity-80 motion-safe:animate-pulse [animation-delay:.4s]" />
+
+          <!-- Mulut 'o' Menyeruput -->
+          <ellipse cx="160" cy="154" rx="7" ry="9" class="fill-sumi" />
+          <ellipse cx="160" cy="156" rx="4" ry="6" class="fill-red-400" />
+
+          <!-- Tangan Memegang Mangkuk -->
+          <circle cx="118" cy="235" r="14" class="fill-[#FFE0BD]" />
+          <circle cx="202" cy="235" r="14" class="fill-[#FFE0BD]" />
+
+          <!-- Mangkuk Ramen Merah -->
+          <path d="M110 230 C110 280, 210 280, 210 230 Z" class="fill-aka stroke-sumi stroke-2" />
+          <ellipse cx="160" cy="230" rx="50" ry="14" class="fill-amber-600 stroke-sumi stroke-2" />
+          <ellipse cx="160" cy="230" rx="44" ry="11" class="fill-amber-100" />
+
+          <!-- Topping: Telur Ajitama, Chashu, Daun Bawang -->
+          <circle cx="145" cy="230" r="8" class="fill-amber-400 stroke-white stroke-2" />
+          <circle cx="145" cy="230" r="4" class="fill-amber-600" />
+          <ellipse cx="175" cy="230" rx="10" ry="6" class="fill-amber-800" />
+          <rect x="156" y="226" width="6" height="6" rx="1" class="fill-emerald-500" />
+
+          <!-- Sumpit Pegang Mie -->
+          <line x1="175" y1="180" x2="225" y2="155" class="stroke-amber-900 stroke-[3.5] stroke-linecap-round" />
+          <line x1="170" y1="183" x2="222" y2="162" class="stroke-amber-900 stroke-[3.5] stroke-linecap-round" />
+
+          <!-- Untaian Mie Terangkat (animate-slurp) -->
+          <path d="M160 228 Q152 195 160 162" class="stroke-amber-300 stroke-4 fill-none stroke-linecap-round origin-bottom motion-safe:animate-slurp" />
+          <path d="M164 228 Q158 195 163 162" class="stroke-amber-200 stroke-[2.5] fill-none stroke-linecap-round origin-bottom motion-safe:animate-slurp" />
+
+          <!-- Uap Mengepul (3 circle kecil putih dengan animate-ping) -->
+          <circle cx="145" cy="205" r="5" class="fill-white opacity-70 motion-safe:animate-ping [animation-delay:0s]" />
+          <circle cx="160" cy="195" r="6" class="fill-white opacity-70 motion-safe:animate-ping [animation-delay:.4s]" />
+          <circle cx="175" cy="205" r="5" class="fill-white opacity-70 motion-safe:animate-ping [animation-delay:.8s]" />
+
+          <!-- Teks Onomatopoeia "ズルズル!" (slurp) -->
+          <g class="origin-center motion-safe:animate-pop">
+            <rect x="215" y="105" width="85" height="32" rx="8" class="fill-aka" />
+            <text x="257" y="127" font-size="14" font-weight="900" font-family="'Noto Serif JP', serif" fill="white" text-anchor="middle" lang="ja">ズルズル!</text>
+          </g>
+        </g>
+      </svg>
+
+      <!-- ADEGAN 2: orang minum matcha -->
+      <svg viewBox="0 0 320 320" class="absolute inset-0 opacity-0 motion-safe:animate-scene2 motion-reduce:hidden">
+        <g>
+          <!-- Badan & Kimono Hijau Matcha -->
+          <path d="M110 240 C110 210, 130 190, 160 190 C190 190, 210 210, 210 240 Z" class="fill-matcha" />
+          <path d="M145 190 L160 215 L175 190 Z" class="fill-washi" />
+
+          <!-- Kepala / Wajah -->
+          <circle cx="160" cy="140" r="50" class="fill-[#FFE0BD]" />
+
+          <!-- Rambut Chibi dengan Sanggul -->
+          <path d="M110 140 C110 95, 210 95, 210 140 C200 115, 120 115, 110 140 Z" class="fill-sumi" />
+          <circle cx="160" cy="92" r="14" class="fill-sumi" />
+
+          <!-- Hiasan Rambut Bunga Sakura -->
+          <circle cx="176" cy="100" r="6" class="fill-sakura" />
+          <circle cx="176" cy="100" r="2" class="fill-amber-400" />
+
+          <!-- Mata Terpejam Bahagia (UU) -->
+          <path d="M132 138 Q140 146 148 138" class="stroke-sumi stroke-[3.5] fill-none stroke-linecap-round" />
+          <path d="M172 138 Q180 146 188 138" class="stroke-sumi stroke-[3.5] fill-none stroke-linecap-round" />
+
+          <!-- Pipi Berseri Merah Muda -->
+          <circle cx="128" cy="148" r="9" class="fill-pink-300 opacity-80 motion-safe:animate-pulse [animation-delay:0s]" />
+          <circle cx="192" cy="148" r="9" class="fill-pink-300 opacity-80 motion-safe:animate-pulse [animation-delay:.3s]" />
+
+          <!-- Senyum Bahagia / Minum -->
+          <path d="M154 156 Q160 162 166 156" class="stroke-sumi stroke-2 fill-none stroke-linecap-round" />
+
+          <!-- Chawan (Mangkuk Teh Keramik) yang Miring Mengangkat (animate-tilt) -->
+          <g class="origin-bottom-right motion-safe:animate-tilt">
+            <circle cx="135" cy="180" r="12" class="fill-[#FFE0BD]" />
+            <circle cx="185" cy="180" r="12" class="fill-[#FFE0BD]" />
+            <path d="M130 165 C130 205, 190 205, 190 165 Z" class="fill-sumi stroke-kin stroke-2" />
+            <ellipse cx="160" cy="165" rx="30" ry="10" class="fill-matcha-dark stroke-kin stroke-1" />
+            <ellipse cx="160" cy="165" rx="26" ry="8" class="fill-matcha motion-safe:animate-pulse" />
+            <circle cx="152" cy="165" r="3" class="fill-emerald-200 opacity-80" />
+            <circle cx="168" cy="164" r="2.5" class="fill-emerald-200 opacity-80" />
+          </g>
+
+          <!-- Kelopak Sakura Kecil Melayang -->
+          <path d="M95 160 C90 150, 105 145, 105 155 C105 165, 95 170, 95 160 Z" class="fill-sakura motion-safe:animate-bounce [animation-delay:0s]" />
+          <path d="M225 180 C220 170, 235 165, 235 175 C235 185, 225 190, 225 180 Z" class="fill-sakura motion-safe:animate-bounce [animation-delay:.5s]" />
+          <path d="M210 110 C205 100, 220 95, 220 105 C220 115, 210 120, 210 110 Z" class="fill-sakura motion-safe:animate-bounce [animation-delay:1s]" />
+
+          <!-- Teks Onomatopoeia "ごくごく" (gokugoku) -->
+          <g class="origin-center motion-safe:animate-pop [animation-delay:.2s]">
+            <rect x="205" y="125" width="95" height="32" rx="8" class="fill-matcha-dark" />
+            <text x="252" y="147" font-size="14" font-weight="900" font-family="'Noto Serif JP', serif" fill="white" text-anchor="middle" lang="ja">ごくごく</text>
+          </g>
+        </g>
+      </svg>
+
+    </figure>
+
+    <!-- Wordmark + teks + progress bar -->
+    <p class="text-3xl font-black tracking-widest text-sumi dark:text-washi">MACHI <span lang="ja" class="text-aka">町</span></p>
+    <p class="text-sm text-sumi/70 dark:text-washi/70">Menyiapkan hidangan untukmu...</p>
+    <div class="h-2 w-56 overflow-hidden rounded-full bg-sumi/10 dark:bg-white/10">
+      <div class="h-full w-0 rounded-full bg-gradient-to-r from-aka to-matcha motion-safe:animate-fill motion-reduce:w-full"></div>
+    </div>
+  </div>
+
+  <!-- Skip to Content Accessibility Link -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 bg-aka text-white px-5 py-2.5 rounded-xl font-bold shadow-lg">
+    Loncat ke konten kontak & reservasi
+  </a>
+
+  <!-- SAKURA FALLING PETALS (Pure CSS) -->
+  <div class="fixed inset-0 pointer-events-none z-20 overflow-hidden" aria-hidden="true">
+    <div class="sakura-petal" style="width: 12px; height: 16px; left: 10%; animation-duration: 9s; animation-delay: 0s;"></div>
+    <div class="sakura-petal" style="width: 14px; height: 19px; left: 25%; animation-duration: 11s; animation-delay: 2s;"></div>
+    <div class="sakura-petal" style="width: 10px; height: 14px; left: 45%; animation-duration: 8s; animation-delay: 4s;"></div>
+    <div class="sakura-petal" style="width: 15px; height: 21px; left: 70%; animation-duration: 12s; animation-delay: 1s;"></div>
+    <div class="sakura-petal" style="width: 11px; height: 15px; left: 88%; animation-duration: 10s; animation-delay: 3s;"></div>
+  </div>
+
+  <!-- ================= STICKY HEADER & NAVBAR (FULL-BLEED) ================= -->
+  <header class="sticky top-0 z-40 w-full bg-washi/90 dark:bg-[#14110f]/90 backdrop-blur-md border-b border-sumi/10 dark:border-white/10">
+    <div class="mx-auto w-full max-w-screen-2xl px-5 sm:px-8 lg:px-12 xl:px-20 py-3.5 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-2.5 group" aria-label="Machi Ramen & Matcha Beranda">
+        <div class="w-10 h-10 rounded-2xl bg-aka flex items-center justify-center text-white font-kanji font-black text-xl shadow-md group-hover:scale-105 transition">
+          町
+        </div>
+        <div>
+          <span class="font-heading font-black text-xl tracking-tight text-sumi dark:text-washi flex items-center gap-1.5">
+            MACHI <span class="text-aka text-sm font-kanji" lang="ja">マチ</span>
+          </span>
+          <span class="block text-[10px] uppercase font-bold tracking-widest text-sumi/60 dark:text-washi/60">RAMEN & MATCHA</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-8 text-xs font-heading font-extrabold tracking-widest uppercase text-sumi/80 dark:text-washi/80" aria-label="Navigasi Utama">
+        <a href="index.html" class="hover:text-aka transition">BERANDA</a>
+        <a href="menu.html" class="hover:text-aka transition">MENU</a>
+        <a href="promo.html" class="hover:text-aka transition">PROMO</a>
+        <a href="about.html" class="hover:text-aka transition">TENTANG</a>
+        <a href="contact.html" aria-current="page" class="text-aka border-b-2 border-aka pb-1 transition">KONTAK</a>
+      </nav>
+
+      <!-- Right Utility Actions -->
+      <div class="flex items-center gap-3">
+        <!-- WhatsApp Quick Order Bag Link -->
+        <a href="https://wa.me/6281234567890?text=Halo%20Machi%20Ramen!%20Saya%20ingin%20memesan%20ramen%20dan%20matcha." target="_blank" rel="noopener" class="p-2.5 rounded-full hover:bg-black/5 dark:hover:bg-white/5 text-sumi dark:text-washi transition" aria-label="Pesan via WhatsApp">
+          <svg class="w-5 h-5 text-aka" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+          </svg>
+        </a>
+
+        <!-- Primary CTA Button -->
+        <a href="#reservasi" class="hidden sm:inline-flex items-center gap-2 bg-aka hover:bg-aka-deep text-white text-xs font-heading font-extrabold px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5">
+          <span>Form Reservasi 🍜</span>
+        </a>
+
+        <!-- Mobile Popover Trigger (Native Popover API) -->
+        <button type="button" popovertarget="menu-mobile" class="lg:hidden p-2 rounded-xl text-sumi dark:text-washi hover:bg-black/5 dark:hover:bg-white/5 transition" aria-label="Buka Menu Mobile">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= MOBILE MENU DRAWER (POPOVER API) ================= -->
+  <nav popover id="menu-mobile" aria-label="Navigasi Menu Mobile">
+    <div class="p-6 h-full flex flex-col justify-between bg-washi dark:bg-[#1a1614] text-sumi dark:text-washi border-l border-sumi/10 dark:border-white/10 shadow-2xl">
+      <div>
+        <div class="flex items-center justify-between pb-5 border-b border-sumi/10 dark:border-white/10 mb-6">
+          <div class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-xl bg-aka flex items-center justify-center text-white font-kanji font-black text-lg">町</div>
+            <span class="font-heading font-black text-base">MACHI <span class="text-aka text-xs font-kanji" lang="ja">マチ</span></span>
+          </div>
+          <button type="button" popovertarget="menu-mobile" popovertargetaction="hide" class="p-2 rounded-xl text-sumi/60 dark:text-washi/60 hover:text-aka" aria-label="Tutup Menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <ul class="space-y-4 font-heading font-extrabold text-sm uppercase tracking-wider">
+          <li><a href="index.html" class="block py-1 hover:text-aka transition">Beranda</a></li>
+          <li><a href="menu.html" class="block py-1 hover:text-aka transition">Buku Menu</a></li>
+          <li><a href="promo.html" class="block py-1 hover:text-aka transition">Promo & Kupon</a></li>
+          <li><a href="about.html" class="block py-1 hover:text-aka transition">Kisah Machi</a></li>
+          <li><a href="contact.html" class="block py-1 text-aka">Kontak & Reservasi</a></li>
+        </ul>
+      </div>
+      <div class="pt-6 border-t border-sumi/10 dark:border-white/10 space-y-3 text-xs">
+        <a href="https://wa.me/6281234567890?text=Halo%20Machi%20Ramen!%20Saya%20ingin%20memesan%20makanan." target="_blank" rel="noopener" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition shadow-sm">
+          <span>💬 Pesan via WhatsApp</span>
+        </a>
+        <p class="text-[11px] text-sumi/60 dark:text-washi/60 text-center">Senopati, Jakarta Selatan • 10.00 – 22.00</p>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main id="main-content" class="flex-1 w-full">
+
+    <!-- ================= 1. CONTACT HERO HEADER (FULL-BLEED) ================= -->
+    <section class="hero-grid-pattern relative py-14 sm:py-20 px-5 sm:px-8 lg:px-12 xl:px-20 border-b border-sumi/10 dark:border-white/10">
+      <div class="mx-auto w-full max-w-screen-2xl text-center">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-aka text-aka bg-aka/5 text-xs font-heading font-extrabold uppercase mb-3">
+          <span>お問い合わせ • RESERVASI & KONTAK</span>
+        </div>
+        <h1 class="font-heading font-black text-3xl sm:text-5xl lg:text-6xl text-sumi dark:text-washi uppercase tracking-tight">
+          Kami Siap Menyambutmu
+        </h1>
+        <p class="text-xs sm:text-base text-sumi/70 dark:text-washi/70 max-w-2xl mx-auto mt-3 leading-relaxed">
+          Amankan meja favoritmu di Machi Senopati untuk santap siang atau malam yang hangat bersama sahabat dan keluarga tercinta.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= 2. RESERVATION FORM & LOCATION GRID ================= -->
+    <div id="reservasi" class="w-full py-14 sm:py-20 px-5 sm:px-8 lg:px-12 xl:px-20 border-b border-sumi/10 dark:border-white/10">
+      <div class="mx-auto w-full max-w-screen-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+
+        <!-- Left Column: Semantic Form with HTML5 Validation & Peer Styling (Pure HTML/CSS) -->
+        <section class="lg:col-span-7 bg-white dark:bg-[#1f1b18] rounded-3xl p-6 sm:p-10 border border-sumi/10 dark:border-white/10 shadow-xl" aria-labelledby="form-heading">
+          <div class="flex items-center justify-between mb-6 pb-4 border-b border-sumi/10 dark:border-white/10">
+            <div>
+              <h2 id="form-heading" class="font-heading font-black text-xl sm:text-2xl text-sumi dark:text-washi uppercase">
+                Formulir Reservasi Meja
+              </h2>
+              <p class="text-xs text-sumi/60 dark:text-washi/60 mt-1">Lengkapi data di bawah ini untuk konfirmasi instan via WhatsApp atau Email.</p>
+            </div>
+            <span class="hanko-stamp text-xs px-3 py-1 rounded-full font-kanji font-bold" lang="ja">予約</span>
+          </div>
+
+          <!-- HTML5 Validated Form (Mailto or static handler with peer error feedback) -->
+          <form action="mailto:hello@machi-ramen.id" method="POST" enctype="text/plain" class="space-y-5 text-xs">
+            
+            <fieldset class="space-y-4">
+              <legend class="sr-only">Informasi Tamu & Detail Kunjungan</legend>
+
+              <!-- Nama Lengkap -->
+              <div>
+                <label for="res-name" class="block font-bold uppercase text-sumi dark:text-washi mb-1">
+                  Nama Lengkap <span class="text-aka">*</span>
+                </label>
+                <input type="text" id="res-name" name="nama" required minlength="3" placeholder="Contoh: Budi Santoso" class="peer w-full bg-washi dark:bg-[#14110f] border border-sumi/20 dark:border-white/15 rounded-xl px-3.5 py-3 text-xs text-sumi dark:text-washi focus:outline-none focus:border-aka invalid:border-red-400 focus:invalid:border-red-500 transition">
+                <span class="hidden peer-[:user-invalid]:block text-[11px] text-red-600 dark:text-red-400 mt-1">
+                  Harap masukkan nama lengkap minimal 3 karakter.
+                </span>
+              </div>
+
+              <!-- Kontak: Phone & Email -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="res-phone" class="block font-bold uppercase text-sumi dark:text-washi mb-1">
+                    Nomor WhatsApp <span class="text-aka">*</span>
+                  </label>
+                  <input type="tel" id="res-phone" name="telepon" required pattern="[0-9+ ]{10,15}" placeholder="081234567890" class="peer w-full bg-washi dark:bg-[#14110f] border border-sumi/20 dark:border-white/15 rounded-xl px-3.5 py-3 text-xs text-sumi dark:text-washi focus:outline-none focus:border-aka invalid:border-red-400 focus:invalid:border-red-500 transition">
+                  <span class="hidden peer-[:user-invalid]:block text-[11px] text-red-600 dark:text-red-400 mt-1">
+                    Harap masukkan nomor WhatsApp yang valid (10-15 digit).
+                  </span>
+                </div>
+                <div>
+                  <label for="res-email" class="block font-bold uppercase text-sumi dark:text-washi mb-1">
+                    Alamat Email (Opsional)
+                  </label>
+                  <input type="email" id="res-email" name="email" placeholder="nama@email.com" class="w-full bg-washi dark:bg-[#14110f] border border-sumi/20 dark:border-white/15 rounded-xl px-3.5 py-3 text-xs text-sumi dark:text-washi focus:outline-none focus:border-aka transition">
+                </div>
+              </div>
+
+              <!-- Tanggal & Waktu -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                  <label for="res-date" class="block font-bold uppercase text-sumi dark:text-washi mb-1">
+                    Tanggal Kedatangan <span class="text-aka">*</span>
+                  </label>
+                  <input type="date" id="res-date" name="tanggal" required class="peer w-full bg-washi dark:bg-[#14110f] border border-sumi/20 dark:border-white/15 rounded-xl px-3 py-2.5 text-xs text-sumi dark:text-washi focus:outline-none focus:border-aka transition">
+                </div>
+                <div>
+                  <label for="res-time" class="block font-bold uppercase text-sumi dark:text-washi mb-1">
+                    Jam Santap <span class="text-aka">*</span>
+                  </label>
+                  <select id="res-time" name="jam" required class="peer w-full bg-washi dark:bg-[#14110f] border border-sumi/20 dark:border-white/15 rounded-xl px-3 py-2.5 text-xs text-sumi dark:text-washi focus:outline-none focus:border-aka font-medium transition">
+                    <option value="">Pilih Jam</option>
+                    <option value="11:30 WIB">11:30 WIB (Makan Siang)</option>
+                    <option value="12:30 WIB">12:30 WIB (Makan Siang)</option>
+                    <option value="14:00 WIB">14:00 WIB (Sore Santai)</option>
+                    <option value="18:00 WIB">18:00 WIB (Makan Malam)</option>
+                    <option value="19:30 WIB">19:30 WIB (Makan Malam)</option>
+                    <option value="20:30 WIB">20:30 WIB (Makan Malam)</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="res-guests" class="block font-bold uppercase text-sumi dark:text-washi mb-1">
+                    Jumlah Tamu <span class="text-aka">*</span>
+                  </label>
+                  <select id="res-guests" name="tamu" required class="peer w-full bg-washi dark:bg-[#14110f] border border-sumi/20 dark:border-white/15 rounded-xl px-3 py-2.5 text-xs text-sumi dark:text-washi focus:outline-none focus:border-aka font-medium transition">
+                    <option value="1 Orang">1 Orang (Bar Counter)</option>
+                    <option value="2 Orang" selected>2 Orang (Reguler)</option>
+                    <option value="3-4 Orang">3 - 4 Orang (Family Table)</option>
+                    <option value="5-8 Orang">5 - 8 Orang (Meja Panjang)</option>
+                    <option value="9+ Orang">9+ Orang (Private Room)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Pilihan Area Duduk -->
+              <div>
+                <label class="block font-bold uppercase text-sumi dark:text-washi mb-1.5">Pilihan Area Meja</label>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                  <label class="flex items-center gap-2 p-3 bg-washi dark:bg-[#14110f] rounded-xl border border-sumi/15 dark:border-white/10 cursor-pointer hover:border-aka transition">
+                    <input type="radio" name="area" value="indoor" checked class="text-aka focus:ring-aka">
+                    <span class="font-bold">Indoor Tatami</span>
+                  </label>
+                  <label class="flex items-center gap-2 p-3 bg-washi dark:bg-[#14110f] rounded-xl border border-sumi/15 dark:border-white/10 cursor-pointer hover:border-aka transition">
+                    <input type="radio" name="area" value="counter" class="text-aka focus:ring-aka">
+                    <span class="font-bold">Chef Bar Counter</span>
+                  </label>
+                  <label class="flex items-center gap-2 p-3 bg-washi dark:bg-[#14110f] rounded-xl border border-sumi/15 dark:border-white/10 cursor-pointer hover:border-aka transition">
+                    <input type="radio" name="area" value="semi-outdoor" class="text-aka focus:ring-aka">
+                    <span class="font-bold">Semi-Outdoor</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Catatan Khusus -->
+              <div>
+                <label for="res-notes" class="block font-bold uppercase text-sumi dark:text-washi mb-1">Catatan Tambahan (Opsional)</label>
+                <textarea id="res-notes" name="catatan" rows="3" placeholder="Contoh: Perayaan ulang tahun, kursi anak (baby chair), alergi kacang/seafood..." class="w-full bg-washi dark:bg-[#14110f] border border-sumi/20 dark:border-white/15 rounded-xl px-3.5 py-2.5 text-xs text-sumi dark:text-washi focus:outline-none focus:border-aka transition"></textarea>
+              </div>
+
+            </fieldset>
+
+            <div class="pt-2 space-y-3">
+              <button type="submit" class="w-full bg-aka hover:bg-aka-deep text-white font-heading font-extrabold text-sm py-3.5 rounded-2xl shadow-lg transition flex items-center justify-center gap-2 transform active:scale-95">
+                <span>Kirim Permintaan Reservasi Meja</span> 🍜
+              </button>
+              
+              <div class="flex items-center justify-center gap-2 text-[11px] text-sumi/60 dark:text-washi/60 text-center">
+                <span>Atau ingin konfirmasi super cepat?</span>
+                <a href="https://wa.me/6281234567890?text=Halo%20Machi%20Ramen!%20Saya%20ingin%20reservasi%20meja%20untuk%20makan%20siang/malam." target="_blank" rel="noopener" class="text-aka font-bold hover:underline inline-flex items-center gap-1">
+                  <span>Chat WhatsApp Langsung</span> 💬
+                </a>
+              </div>
+            </div>
+          </form>
+        </section>
+
+        <!-- Right Column: Location, Operating Hours & Google Maps Embed -->
+        <aside class="lg:col-span-5 space-y-6" aria-label="Informasi Gerai dan Lokasi">
+
+          <!-- Address & Hours Card -->
+          <div class="bg-white dark:bg-[#1f1b18] rounded-3xl p-6 sm:p-8 border border-sumi/10 dark:border-white/10 shadow-lg">
+            <h3 class="font-heading font-black text-lg text-sumi dark:text-washi uppercase mb-5 flex items-center justify-between">
+              <span>Informasi Kedai Machi</span>
+              <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold">Buka</span>
+            </h3>
+            
+            <address class="not-italic text-xs text-sumi/80 dark:text-washi/80 space-y-4">
+              <div class="flex items-start gap-3">
+                <span class="text-aka text-lg" aria-hidden="true">📍</span>
+                <div>
+                  <strong class="text-sumi dark:text-washi block font-bold text-sm">Machi Ramen Senopati</strong>
+                  <span class="leading-relaxed">Jl. Senopati No. 88, Kebayoran Baru, Jakarta Selatan 12190</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-aka text-lg" aria-hidden="true">📞</span>
+                <div>
+                  <strong class="text-sumi dark:text-washi block font-bold text-sm">Telepon & WhatsApp Layanan Tamu</strong>
+                  <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" class="text-aka hover:underline font-bold">+62 812-3456-7890</a>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-aka text-lg" aria-hidden="true">✉️</span>
+                <div>
+                  <strong class="text-sumi dark:text-washi block font-bold text-sm">Email Resmi</strong>
+                  <a href="mailto:hello@machi-ramen.id" class="text-aka hover:underline font-bold">hello@machi-ramen.id</a>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-aka text-lg" aria-hidden="true">🕒</span>
+                <div>
+                  <strong class="text-sumi dark:text-washi block font-bold text-sm">Jam Operasional</strong>
+                  <span>Senin – Minggu: 10.00 – 22.00 WIB (Last Order 21.30)</span>
+                </div>
+              </div>
+            </address>
+
+            <div class="mt-6 pt-5 border-t border-sumi/10 dark:border-white/10 flex flex-col sm:flex-row gap-2.5">
+              <a href="https://wa.me/6281234567890?text=Halo%20Machi%20Ramen!%20Saya%20ingin%20bertanya%20mengenai%20menu%20dan%20reservasi%20meja." target="_blank" rel="noopener" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white text-center text-xs font-bold py-3 rounded-xl transition flex items-center justify-center gap-1.5 shadow-sm">
+                <span>Chat WhatsApp Resmi</span> 💬
+              </a>
+              <a href="https://maps.google.com" target="_blank" rel="noopener" class="border border-sumi/20 dark:border-white/20 text-sumi dark:text-washi text-xs font-bold px-4 py-3 rounded-xl hover:bg-black/5 dark:hover:bg-white/5 flex items-center justify-center gap-1">
+                <span>Google Maps</span> ↗
+              </a>
+            </div>
+          </div>
+
+          <!-- Google Maps Iframe Embed (Responsive & Clean) -->
+          <div class="rounded-3xl overflow-hidden border border-sumi/10 dark:border-white/10 shadow-lg aspect-video w-full bg-sumi/5">
+            <iframe title="Lokasi Google Maps Machi Ramen Senopati" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.2755716972233!2d106.80414457499042!3d-6.227357493760773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f1505373a005%3A0xbfe69647bf3c8801!2sSenopati%20Jakarta!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" class="w-full h-full border-0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+
+    <!-- ================= 3. FAQ ACCORDION SECTION (Native HTML5 <details name="faq">) ================= -->
+    <section class="bg-asanoha py-16 sm:py-24 px-5 sm:px-8 lg:px-12 xl:px-20" aria-labelledby="faq-title">
+      <div class="mx-auto w-full max-w-4xl">
+        <div class="text-center mb-10">
+          <span class="text-xs font-bold text-aka uppercase tracking-widest font-heading">TANYA JAWAB</span>
+          <h2 id="faq-title" class="font-heading font-black text-2xl sm:text-4xl text-sumi dark:text-washi uppercase mt-1">
+            Pertanyaan yang Sering Diajukan (FAQ)
+          </h2>
+          <p class="text-xs sm:text-sm text-sumi/60 dark:text-washi/60 mt-1">Ketuk pertanyaan untuk membuka informasi seputar gerai Machi.</p>
+        </div>
+
+        <div class="space-y-3.5 text-xs sm:text-sm">
+          
+          <!-- FAQ 1 -->
+          <details name="contact-faq" class="bg-white dark:bg-[#1f1b18] rounded-2xl p-4 sm:p-5 border border-sumi/10 dark:border-white/10 group cursor-pointer shadow-sm hover:border-sumi/30 transition" open>
+            <summary class="font-bold text-sumi dark:text-washi list-none flex justify-between items-center text-sm select-none">
+              <span class="flex items-center gap-2.5">
+                <span class="w-2 h-2 rounded-full bg-aka"></span>
+                Apakah seluruh sajian di Machi Ramen & Matcha Halal?
+              </span>
+              <span class="group-open:rotate-180 transition transform text-aka font-black text-sm">▼</span>
+            </summary>
+            <p class="text-sumi/70 dark:text-washi/70 mt-3 pt-3 border-t border-sumi/10 dark:border-white/10 text-xs sm:text-sm leading-relaxed">
+              Seluruh racikan kuah dan daging kami menggunakan 100% bahan baku ayam kampung segar, daging sapi, dan kaldu sayuran bersertifikasi halal. Kami sama sekali tidak menggunakan mirin atau sake beralkohol, melainkan menggantinya dengan fermentasi buah apel alami dan kombu dashi untuk rasa manis gurih umami yang autentik.
+            </p>
+          </details>
+
+          <!-- FAQ 2 -->
+          <details name="contact-faq" class="bg-white dark:bg-[#1f1b18] rounded-2xl p-4 sm:p-5 border border-sumi/10 dark:border-white/10 group cursor-pointer shadow-sm hover:border-sumi/30 transition">
+            <summary class="font-bold text-sumi dark:text-washi list-none flex justify-between items-center text-sm select-none">
+              <span class="flex items-center gap-2.5">
+                <span class="w-2 h-2 rounded-full bg-ai"></span>
+                Apakah saya harus reservasi terlebih dahulu sebelum datang?
+              </span>
+              <span class="group-open:rotate-180 transition transform text-aka font-black text-sm">▼</span>
+            </summary>
+            <p class="text-sumi/70 dark:text-washi/70 mt-3 pt-3 border-t border-sumi/10 dark:border-white/10 text-xs sm:text-sm leading-relaxed">
+              Machi menerima walk-in customer setiap hari. Namun untuk akhir pekan (Sabtu & Minggu) atau kunjungan rombongan di atas 4 orang, kami sangat menyarankan untuk melakukan reservasi terlebih dahulu agar meja Anda telah siap tanpa antrean panjang.
+            </p>
+          </details>
+
+          <!-- FAQ 3 -->
+          <details name="contact-faq" class="bg-white dark:bg-[#1f1b18] rounded-2xl p-4 sm:p-5 border border-sumi/10 dark:border-white/10 group cursor-pointer shadow-sm hover:border-sumi/30 transition">
+            <summary class="font-bold text-sumi dark:text-washi list-none flex justify-between items-center text-sm select-none">
+              <span class="flex items-center gap-2.5">
+                <span class="w-2 h-2 rounded-full bg-matcha-dark"></span>
+                Apakah tersedia area parkir mobil & valet di Senopati?
+              </span>
+              <span class="group-open:rotate-180 transition transform text-aka font-black text-sm">▼</span>
+            </summary>
+            <p class="text-sumi/70 dark:text-washi/70 mt-3 pt-3 border-t border-sumi/10 dark:border-white/10 text-xs sm:text-sm leading-relaxed">
+              Tersedia area parkir mobil dan motor yang aman di halaman kedai kami di Jl. Senopati No. 88, lengkap dengan layanan valet parkir khusus pengunjung Machi Ramen.
+            </p>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER (FULL-BLEED) ================= -->
+  <footer class="w-full bg-sumi text-washi pt-14 pb-8 px-5 sm:px-8 lg:px-12 xl:px-20 border-t border-sumi/20">
+    <div class="mx-auto w-full max-w-screen-2xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+
+      <!-- Col 1: Brand Info -->
+      <div>
+        <div class="flex items-center gap-2.5 mb-4">
+          <div class="w-8 h-8 rounded-xl bg-aka flex items-center justify-center text-white font-kanji font-black text-base">
+            町
+          </div>
+          <span class="font-heading font-black text-lg tracking-tight">MACHI RAMEN & MATCHA</span>
+        </div>
+        <p class="text-xs text-washi/70 leading-relaxed mb-4">
+          Kedai ramen otentik Jepang dan matcha bar tradisional di Senopati, Jakarta Selatan. Menyajikan kehangatan resep rumahan yang ramah dan menenangkan hati.
+        </p>
+        <address class="not-italic text-xs text-washi/70 space-y-1">
+          <p>📍 Jl. Senopati No. 88, Jakarta Selatan 12190</p>
+          <p>📞 +62 812-3456-7890</p>
+          <p>✉️ <a href="mailto:hello@machi-ramen.id" class="hover:text-aka underline">hello@machi-ramen.id</a></p>
+        </address>
+      </div>
+
+      <!-- Col 2: Navigation Links -->
+      <div>
+        <h3 class="font-heading font-black text-sm uppercase tracking-wider mb-4 text-aka">Halaman Utama</h3>
+        <ul class="space-y-2 text-xs text-washi/70">
+          <li><a href="index.html" class="hover:text-aka transition">Beranda Utama</a></li>
+          <li><a href="menu.html" class="hover:text-aka transition">Daftar Menu & Kustomisasi</a></li>
+          <li><a href="promo.html" class="hover:text-aka transition">Voucher & Program Promo</a></li>
+          <li><a href="about.html" class="hover:text-aka transition">Kisah Kami & Filosofi</a></li>
+          <li><a href="contact.html" aria-current="page" class="text-aka font-bold">Reservasi & Kontak</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Operating Hours -->
+      <div>
+        <h3 class="font-heading font-black text-sm uppercase tracking-wider mb-4 text-aka">Jam Operasional</h3>
+        <ul class="space-y-2 text-xs text-washi/70">
+          <li class="flex justify-between">
+            <span>Senin – Jumat</span>
+            <span class="font-bold text-washi">10.00 – 22.00 WIB</span>
+          </li>
+          <li class="flex justify-between">
+            <span>Sabtu – Minggu</span>
+            <span class="font-bold text-washi">10.00 – 23.00 WIB</span>
+          </li>
+          <li class="flex justify-between">
+            <span>Kitchen Last Order</span>
+            <span class="font-bold text-aka">21.30 WIB</span>
+          </li>
+        </ul>
+        <div class="mt-4 p-3 bg-white/5 rounded-2xl border border-white/10 text-[11px] text-washi/80">
+          🍜 Tersedia Dine-in, Takeaway, dan Delivery via WhatsApp.
+        </div>
+      </div>
+
+      <!-- Col 4: WhatsApp Direct & Social -->
+      <div>
+        <h3 class="font-heading font-black text-sm uppercase tracking-wider mb-4 text-aka">Pemesanan Langsung</h3>
+        <p class="text-xs text-washi/70 mb-3">
+          Pesan cepat melalui WhatsApp resmi Machi dengan konfirmasi instan dari tim kedai.
+        </p>
+        <a href="https://wa.me/6281234567890?text=Halo%20Machi%20Ramen!%20Saya%20ingin%20memesan%20makanan." target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 w-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-3 rounded-xl transition shadow-sm">
+          <span>Buka WhatsApp (+62 812-3456-7890)</span> 💬
+        </a>
+        <div class="flex gap-3 mt-4 text-washi/60 text-xs">
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="hover:text-aka transition">@machi.ramen</a>
+          <span>•</span>
+          <a href="https://tiktok.com" target="_blank" rel="noopener" class="hover:text-aka transition">TikTok</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Copyright Bar -->
+    <div class="mx-auto w-full max-w-screen-2xl pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[11px] text-washi/50 gap-2">
+      <p>© 2026 Machi Ramen & Matcha. Hak Cipta Dilindungi Undang-Undang.</p>
+      <div class="flex items-center gap-4">
+        <a href="about.html" class="hover:underline">Kebijakan Privasi</a>
+        <a href="about.html" class="hover:underline">Ketentuan Layanan</a>
+        <a href="404.html" class="hover:underline">Halaman 404</a>
+        <span class="font-kanji text-aka font-bold" lang="ja">町 • ラーメン • 抹茶</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <a href="#top" class="fixed bottom-6 right-6 z-30 p-3 bg-aka hover:bg-aka-deep text-white rounded-full shadow-xl transition transform hover:-translate-y-1" aria-label="Kembali ke atas">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
+  </a>
+
+  <!-- Scripts: jQuery & Machi Core Interaction -->
+  <script src="./js/jquery-3.7.1.min.js"></script>
+  <script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.7.1.min.js"><\/script>')</script>
+  <script src="./js/main.js"></script>
+
+</body>
+</html>

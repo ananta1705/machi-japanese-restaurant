@@ -1,0 +1,14 @@
+{
+  "name": "machi-japanese-restaurant",
+  "version": "1.0.0",
+  "description": "MACHI Japanese Kitchen & Matcha — Japanese restaurant website built with HTML5, CSS3, Tailwind CSS v4, JavaScript, and jQuery 3.7.1.",
+  "private": true,
+  "scripts": {
+    "build": "tailwindcss -i ./css/input.css -o ./css/output.css --minify",
+    "dev": "tailwindcss -i ./css/input.css -o ./css/output.css --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.0",
+    "tailwindcss": "^4.1.0"
+  }
+}

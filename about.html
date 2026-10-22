@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth" id="top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kisah & Filosofi Kami | Machi Ramen & Matcha</title>
+  <meta name="description"
+    content="Pelajari kisah perjalanan Machi Ramen & Matcha sejak 2015, makna kanji 町 (kampung halaman hangat), filosofi Omotenashi, dan dedikasi proses kaldu kolagen 18 jam.">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%23E8401C'/><text x='50' y='72' font-size='65' font-family='serif' font-weight='900' fill='white' text-anchor='middle'>町</text></svg>">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Kisah & Filosofi Kami | Machi Ramen & Matcha">
+  <meta property="og:description"
+    content="Makna kanji 町 (machi): kedai yang terasa seperti kampung halaman hangat di Senopati, Jakarta.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+JP:wght@600;700;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=Zen+Antique&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CDN + Config (Required build tool for animations & styling) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'media',
+      theme: {
+        extend: {
+          colors: {
+            washi: '#FFF4EA',
+            sumi: '#1A1A1A',
+            aka: '#E8401C',
+            'aka-deep': '#B5300C',
+            ai: '#1B2F8F',
+            'ai-deep': '#13226B',
+            matcha: { DEFAULT: '#7A9E3B', light: '#DDE8C3', dark: '#4F6B22' },
+            sakura: '#F6C6D0',
+            kin: '#C9A24B'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['"Plus Jakarta Sans"', 'sans-serif'],
+            kanji: ['"Noto Serif JP"', '"Zen Antique"', 'serif']
+          },
+          keyframes: {
+            slurp:       { '0%,100%': { transform: 'translateY(0) scaleY(1)' }, '50%': { transform: 'translateY(-10px) scaleY(1.2)' } },
+            tilt:        { '0%,100%': { transform: 'rotate(0deg)' }, '50%': { transform: 'rotate(-24deg) translateY(-5px)' } },
+            scene1:      { '0%,45%': { opacity: '1' }, '50%,100%': { opacity: '0' } },
+            scene2:      { '0%,45%': { opacity: '0' }, '50%,95%': { opacity: '1' }, '100%': { opacity: '0' } },
+            pop:         { '0%,100%': { transform: 'scale(0)' }, '30%,70%': { transform: 'scale(1)' } },
+            fill:        { from: { width: '0%' }, to: { width: '100%' } },
+            'fade-out':  { to: { opacity: '0', visibility: 'hidden', pointerEvents: 'none' } },
+            unlock:      { to: { overflow: 'auto' } },
+            sway:        { '0%,100%': { transform: 'rotate(-2deg)' }, '50%': { transform: 'rotate(2deg)' } },
+          },
+          animation: {
+            slurp: 'slurp 0.4s ease-in-out infinite',
+            tilt: 'tilt 0.8s ease-in-out infinite',
+            scene1: 'scene1 1.6s linear infinite',
+            scene2: 'scene2 1.6s linear infinite',
+            pop: 'pop 0.8s ease-in-out infinite',
+            fill: 'fill 1.6s linear forwards',
+            'fade-out': 'fade-out 0.3s ease-in 1.7s forwards',
+            unlock: 'unlock 0s 1.7s forwards',
+            sway: 'sway 2s ease-in-out infinite',
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./css/output.css">
+  <link rel="stylesheet" href="./css/custom.css">
+</head>
+
+<body
+  class="overflow-hidden motion-safe:animate-unlock motion-reduce:overflow-auto bg-washi dark:bg-sumi text-sumi dark:text-washi min-h-screen flex flex-col font-sans selection:bg-aka selection:text-white">
+
+  <!-- ================= LOADING SCREEN (100% TAILWIND, ZERO CUSTOM JS/CSS KEYFRAMES, GPU-ACCELERATED) ================= -->
+  <div id="preloader" role="status" aria-live="polite" aria-label="Memuat halaman Machi"
+       class="fixed inset-0 z-[9999] flex flex-col items-center justify-center gap-6 bg-washi dark:bg-sumi
+              transform-gpu will-change-[opacity]
+              animate-fade-out motion-reduce:[animation-duration:0.2s] motion-reduce:[animation-delay:0.4s]">
+
+    <!-- Noren merah di atas, bergoyang pelan -->
+    <div aria-hidden="true" class="absolute inset-x-0 top-0 flex justify-center gap-2">
+      <div class="h-24 w-16 origin-top rounded-b-xl bg-aka motion-safe:animate-sway [animation-delay:0s]"></div>
+      <div class="h-24 w-16 origin-top rounded-b-xl bg-aka motion-safe:animate-sway [animation-delay:.15s]"></div>
+      <div class="h-24 w-16 origin-top rounded-b-xl bg-aka motion-safe:animate-sway [animation-delay:.3s]"></div>
+      <div class="h-24 w-16 origin-top rounded-b-xl bg-aka motion-safe:animate-sway [animation-delay:.45s]"></div>
+      <div class="h-24 w-16 origin-top rounded-b-xl bg-aka motion-safe:animate-sway [animation-delay:.6s]"></div>
+    </div>
+
+    <!-- Panggung ilustrasi -->
+    <figure aria-hidden="true" class="relative size-64 sm:size-80">
+
+      <!-- ADEGAN 1: orang menyeruput ramen -->
+      <svg viewBox="0 0 320 320" class="absolute inset-0 motion-safe:animate-scene1 motion-reduce:opacity-100">
+        <g>
+          <!-- Badan & Pakaian Merah Machi -->
+          <path d="M110 240 C110 210, 130 190, 160 190 C190 190, 210 210, 210 240 Z" class="fill-aka" />
+          <path d="M145 190 L160 215 L175 190 Z" class="fill-washi" />
+
+          <!-- Kepala / Wajah -->
+          <circle cx="160" cy="140" r="50" class="fill-[#FFE0BD]" />
+
+          <!-- Rambut Chibi -->
+          <path d="M110 140 C110 95, 210 95, 210 140 C200 115, 120 115, 110 140 Z" class="fill-sumi" />
+
+          <!-- Tenugui / Ikat Kepala Merah -->
+          <path d="M106 122 C120 112, 200 112, 214 122 L212 134 C198 124, 122 124, 108 134 Z" class="fill-aka" />
+          <rect x="154" y="122" width="12" height="10" rx="2" class="fill-washi" />
+
+          <!-- Mata Menyipit Senang (^^) -->
+          <path d="M132 140 Q140 132 148 140" class="stroke-sumi stroke-[3.5] fill-none stroke-linecap-round" />
+          <path d="M172 140 Q180 132 188 140" class="stroke-sumi stroke-[3.5] fill-none stroke-linecap-round" />
+
+          <!-- Pipi Menggembung Kiri & Kanan (animate-pulse, beda delay) -->
+          <circle cx="128" cy="150" r="10"
+            class="fill-red-300 opacity-80 motion-safe:animate-pulse [animation-delay:0s]" />
+          <circle cx="192" cy="150" r="10"
+            class="fill-red-300 opacity-80 motion-safe:animate-pulse [animation-delay:.4s]" />
+
+          <!-- Mulut 'o' Menyeruput -->
+          <ellipse cx="160" cy="154" rx="7" ry="9" class="fill-sumi" />
+          <ellipse cx="160" cy="156" rx="4" ry="6" class="fill-red-400" />
+
+          <!-- Tangan Memegang Mangkuk -->
+          <circle cx="118" cy="235" r="14" class="fill-[#FFE0BD]" />
+          <circle cx="202" cy="235" r="14" class="fill-[#FFE0BD]" />
+
+          <!-- Mangkuk Ramen Merah -->
+          <path d="M110 230 C110 280, 210 280, 210 230 Z" class="fill-aka stroke-sumi stroke-2" />
+          <ellipse cx="160" cy="230" rx="50" ry="14" class="fill-amber-600 stroke-sumi stroke-2" />
+          <ellipse cx="160" cy="230" rx="44" ry="11" class="fill-amber-100" />
+
+          <!-- Topping: Telur Ajitama, Chashu, Daun Bawang -->
+          <circle cx="145" cy="230" r="8" class="fill-amber-400 stroke-white stroke-2" />
+          <circle cx="145" cy="230" r="4" class="fill-amber-600" />
+          <ellipse cx="175" cy="230" rx="10" ry="6" class="fill-amber-800" />
+          <rect x="156" y="226" width="6" height="6" rx="1" class="fill-emerald-500" />
+
+          <!-- Sumpit Pegang Mie -->
+          <line x1="175" y1="180" x2="225" y2="155" class="stroke-amber-900 stroke-[3.5] stroke-linecap-round" />
+          <line x1="170" y1="183" x2="222" y2="162" class="stroke-amber-900 stroke-[3.5] stroke-linecap-round" />
+
+          <!-- Untaian Mie Terangkat (animate-slurp) -->
+          <path d="M160 228 Q152 195 160 162"
+            class="stroke-amber-300 stroke-4 fill-none stroke-linecap-round origin-bottom motion-safe:animate-slurp" />
+          <path d="M164 228 Q158 195 163 162"
+            class="stroke-amber-200 stroke-[2.5] fill-none stroke-linecap-round origin-bottom motion-safe:animate-slurp" />
+
+          <!-- Uap Mengepul (3 circle kecil putih dengan animate-ping) -->
+          <circle cx="145" cy="205" r="5" class="fill-white opacity-70 motion-safe:animate-ping [animation-delay:0s]" />
+          <circle cx="160" cy="195" r="6"
+            class="fill-white opacity-70 motion-safe:animate-ping [animation-delay:.4s]" />
+          <circle cx="175" cy="205" r="5"
+            class="fill-white opacity-70 motion-safe:animate-ping [animation-delay:.8s]" />
+
+          <!-- Teks Onomatopoeia "ズルズル!" (slurp) -->
+          <g class="origin-center motion-safe:animate-pop">
+            <rect x="215" y="105" width="85" height="32" rx="8" class="fill-aka" />
+            <text x="257" y="127" font-size="14" font-weight="900" font-family="'Noto Serif JP', serif" fill="white"
+              text-anchor="middle" lang="ja">ズルズル!</text>
+          </g>
+        </g>
+      </svg>
+
+      <!-- ADEGAN 2: orang minum matcha -->
+      <svg viewBox="0 0 320 320" class="absolute inset-0 opacity-0 motion-safe:animate-scene2 motion-reduce:hidden">
+        <g>
+          <!-- Badan & Kimono Hijau Matcha -->
+          <path d="M110 240 C110 210, 130 190, 160 190 C190 190, 210 210, 210 240 Z" class="fill-matcha" />
+          <path d="M145 190 L160 215 L175 190 Z" class="fill-washi" />
+
+          <!-- Kepala / Wajah -->
+          <circle cx="160" cy="140" r="50" class="fill-[#FFE0BD]" />
+
+          <!-- Rambut Chibi dengan Sanggul -->
+          <path d="M110 140 C110 95, 210 95, 210 140 C200 115, 120 115, 110 140 Z" class="fill-sumi" />
+          <circle cx="160" cy="92" r="14" class="fill-sumi" />
+
+          <!-- Hiasan Rambut Bunga Sakura -->
+          <circle cx="176" cy="100" r="6" class="fill-sakura" />
+          <circle cx="176" cy="100" r="2" class="fill-amber-400" />
+
+          <!-- Mata Terpejam Bahagia (UU) -->
+          <path d="M132 138 Q140 146 148 138" class="stroke-sumi stroke-[3.5] fill-none stroke-linecap-round" />
+          <path d="M172 138 Q180 146 188 138" class="stroke-sumi stroke-[3.5] fill-none stroke-linecap-round" />
+
+          <!-- Pipi Berseri Merah Muda -->
+          <circle cx="128" cy="148" r="9"
+            class="fill-pink-300 opacity-80 motion-safe:animate-pulse [animation-delay:0s]" />
+          <circle cx="192" cy="148" r="9"
+            class="fill-pink-300 opacity-80 motion-safe:animate-pulse [animation-delay:.3s]" />
+
+          <!-- Senyum Bahagia / Minum -->
+          <path d="M154 156 Q160 162 166 156" class="stroke-sumi stroke-2 fill-none stroke-linecap-round" />
+
+          <!-- Chawan (Mangkuk Teh Keramik) yang Miring Mengangkat (animate-tilt) -->
+          <g class="origin-bottom-right motion-safe:animate-tilt">
+            <circle cx="135" cy="180" r="12" class="fill-[#FFE0BD]" />
+            <circle cx="185" cy="180" r="12" class="fill-[#FFE0BD]" />
+            <path d="M130 165 C130 205, 190 205, 190 165 Z" class="fill-sumi stroke-kin stroke-2" />
+            <ellipse cx="160" cy="165" rx="30" ry="10" class="fill-matcha-dark stroke-kin stroke-1" />
+            <ellipse cx="160" cy="165" rx="26" ry="8" class="fill-matcha motion-safe:animate-pulse" />
+            <circle cx="152" cy="165" r="3" class="fill-emerald-200 opacity-80" />
+            <circle cx="168" cy="164" r="2.5" class="fill-emerald-200 opacity-80" />
+          </g>
+
+          <!-- Kelopak Sakura Kecil Melayang -->
+          <path d="M95 160 C90 150, 105 145, 105 155 C105 165, 95 170, 95 160 Z"
+            class="fill-sakura motion-safe:animate-bounce [animation-delay:0s]" />
+          <path d="M225 180 C220 170, 235 165, 235 175 C235 185, 225 190, 225 180 Z"
+            class="fill-sakura motion-safe:animate-bounce [animation-delay:.5s]" />
+          <path d="M210 110 C205 100, 220 95, 220 105 C220 115, 210 120, 210 110 Z"
+            class="fill-sakura motion-safe:animate-bounce [animation-delay:1s]" />
+
+          <!-- Teks Onomatopoeia "ごくごく" (gokugoku) -->
+          <g class="origin-center motion-safe:animate-pop [animation-delay:.2s]">
+            <rect x="205" y="125" width="95" height="32" rx="8" class="fill-matcha-dark" />
+            <text x="252" y="147" font-size="14" font-weight="900" font-family="'Noto Serif JP', serif" fill="white"
+              text-anchor="middle" lang="ja">ごくごく</text>
+          </g>
+        </g>
+      </svg>
+
+    </figure>
+
+    <!-- Wordmark + teks + progress bar -->
+    <p class="text-3xl font-black tracking-widest text-sumi dark:text-washi">MACHI <span lang="ja"
+        class="text-aka">町</span></p>
+    <p class="text-sm text-sumi/70 dark:text-washi/70">Menyiapkan hidangan untukmu...</p>
+    <div class="h-2 w-56 overflow-hidden rounded-full bg-sumi/10 dark:bg-white/10">
+      <div
+        class="h-full w-0 rounded-full bg-gradient-to-r from-aka to-matcha motion-safe:animate-fill motion-reduce:w-full">
+      </div>
+    </div>
+  </div>
+
+  <!-- Skip to Content Accessibility Link -->
+  <a href="#main-content"
+    class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 bg-aka text-white px-5 py-2.5 rounded-xl font-bold shadow-lg">
+    Loncat ke konten kisah
+  </a>
+
+  <!-- SAKURA FALLING PETALS (Pure CSS) -->
+  <div class="fixed inset-0 pointer-events-none z-20 overflow-hidden" aria-hidden="true">
+    <div class="sakura-petal"
+      style="width: 12px; height: 16px; left: 10%; animation-duration: 9s; animation-delay: 0s;"></div>
+    <div class="sakura-petal"
+      style="width: 14px; height: 19px; left: 25%; animation-duration: 11s; animation-delay: 2s;"></div>
+    <div class="sakura-petal"
+      style="width: 10px; height: 14px; left: 45%; animation-duration: 8s; animation-delay: 4s;"></div>
+    <div class="sakura-petal"
+      style="width: 15px; height: 21px; left: 70%; animation-duration: 12s; animation-delay: 1s;"></div>
+    <div class="sakura-petal"
+      style="width: 11px; height: 15px; left: 88%; animation-duration: 10s; animation-delay: 3s;"></div>
+  </div>
+
+  <!-- ================= STICKY HEADER & NAVBAR (FULL-BLEED) ================= -->
+  <header
+    class="sticky top-0 z-40 w-full bg-washi/90 dark:bg-[#14110f]/90 backdrop-blur-md border-b border-sumi/10 dark:border-white/10">
+    <div
+      class="mx-auto w-full max-w-screen-2xl px-5 sm:px-8 lg:px-12 xl:px-20 py-3.5 flex items-center justify-between">
+
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-2.5 group" aria-label="Machi Ramen & Matcha Beranda">
+        <div
+          class="w-10 h-10 rounded-2xl bg-aka flex items-center justify-center text-white font-kanji font-black text-xl shadow-md group-hover:scale-105 transition">
+          町
+        </div>
+        <div>
+          <span
+            class="font-heading font-black text-xl tracking-tight text-sumi dark:text-washi flex items-center gap-1.5">
+            MACHI <span class="text-aka text-sm font-kanji" lang="ja">マチ</span>
+          </span>
+          <span class="block text-[10px] uppercase font-bold tracking-widest text-sumi/60 dark:text-washi/60">RAMEN &
+            MATCHA</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav
+        class="hidden lg:flex items-center gap-8 text-xs font-heading font-extrabold tracking-widest uppercase text-sumi/80 dark:text-washi/80"
+        aria-label="Navigasi Utama">
+        <a href="index.html" class="hover:text-aka transition">BERANDA</a>
+        <a href="menu.html" class="hover:text-aka transition">MENU</a>
+        <a href="promo.html" class="hover:text-aka transition">PROMO</a>
+        <a href="about.html" aria-current="page" class="text-aka border-b-2 border-aka pb-1 transition">TENTANG</a>
+        <a href="contact.html" class="hover:text-aka transition">KONTAK</a>
+      </nav>
+
+      <!-- Right Utility Actions -->
+      <div class="flex items-center gap-3">
+        <!-- WhatsApp Quick Order Bag Link -->
+        <a href="https://wa.me/6281234567890?text=Halo%20Machi%20Ramen!%20Saya%20ingin%20memesan%20ramen%20dan%20matcha."
+          target="_blank" rel="noopener"
+          class="p-2.5 rounded-full hover:bg-black/5 dark:hover:bg-white/5 text-sumi dark:text-washi transition"
+          aria-label="Pesan via WhatsApp">
+          <svg class="w-5 h-5 text-aka" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+        </a>
+
+        <!-- Primary CTA Button -->
+        <a href="menu.html"
+          class="hidden sm:inline-flex items-center gap-2 bg-aka hover:bg-aka-deep text-white text-xs font-heading font-extrabold px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5">
+          <span>Lihat Menu 🥢</span>
+        </a>
+
+        <!-- Mobile Popover Trigger (Native Popover API) -->
+        <button type="button" popovertarget="menu-mobile"
+          class="lg:hidden p-2 rounded-xl text-sumi dark:text-washi hover:bg-black/5 dark:hover:bg-white/5 transition"
+          aria-label="Buka Menu Mobile">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= MOBILE MENU DRAWER (POPOVER API) ================= -->
+  <nav popover id="menu-mobile" aria-label="Navigasi Menu Mobile">
+    <div
+      class="p-6 h-full flex flex-col justify-between bg-washi dark:bg-[#1a1614] text-sumi dark:text-washi border-l border-sumi/10 dark:border-white/10 shadow-2xl">
+      <div>
+        <div class="flex items-center justify-between pb-5 border-b border-sumi/10 dark:border-white/10 mb-6">
+          <div class="flex items-center gap-2.5">
+            <div
+              class="w-9 h-9 rounded-xl bg-aka flex items-center justify-center text-white font-kanji font-black text-lg">
+              町</div>
+            <span class="font-heading font-black text-base">MACHI <span class="text-aka text-xs font-kanji"
+                lang="ja">マチ</span></span>
+          </div>
+          <button type="button" popovertarget="menu-mobile" popovertargetaction="hide"
+            class="p-2 rounded-xl text-sumi/60 dark:text-washi/60 hover:text-aka" aria-label="Tutup Menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <ul class="space-y-4 font-heading font-extrabold text-sm uppercase tracking-wider">
+          <li><a href="index.html" class="block py-1 hover:text-aka transition">Beranda</a></li>
+          <li><a href="menu.html" class="block py-1 hover:text-aka transition">Buku Menu</a></li>
+          <li><a href="promo.html" class="block py-1 hover:text-aka transition">Promo & Kupon</a></li>
+          <li><a href="about.html" class="block py-1 text-aka">Kisah Machi</a></li>
+          <li><a href="contact.html" class="block py-1 hover:text-aka transition">Kontak & Reservasi</a></li>
+        </ul>
+      </div>
+      <div class="pt-6 border-t border-sumi/10 dark:border-white/10 space-y-3 text-xs">
+        <a href="https://wa.me/6281234567890?text=Halo%20Machi%20Ramen!%20Saya%20ingin%20memesan%20makanan."
+          target="_blank" rel="noopener"
+          class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition shadow-sm">
+          <span>💬 Pesan via WhatsApp</span>
+        </a>
+        <p class="text-[11px] text-sumi/60 dark:text-washi/60 text-center">Senopati, Jakarta Selatan • 10.00 – 22.00</p>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main id="main-content" class="flex-1 w-full">
+
+    <!-- ================= 1. ABOUT HERO SECTION (FULL-BLEED) ================= -->
+    <section
+      class="hero-grid-pattern relative py-16 sm:py-24 px-5 sm:px-8 lg:px-12 xl:px-20 border-b border-sumi/10 dark:border-white/10"
+      aria-labelledby="about-hero-title">
+      <!-- Watermark Kanji Background -->
+      <div
+        class="absolute right-4 top-1/2 -translate-y-1/2 opacity-[0.03] dark:opacity-[0.02] font-kanji text-[22rem] select-none pointer-events-none"
+        aria-hidden="true">
+        町
+      </div>
+
+      <div class="mx-auto w-full max-w-screen-2xl text-center relative z-10">
+        <div
+          class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-aka text-aka bg-aka/5 text-xs font-heading font-extrabold uppercase mb-4">
+          <span>私たちの物語 • CERITA KAMI</span>
+        </div>
+        <h1 id="about-hero-title"
+          class="font-heading font-black text-3xl sm:text-5xl lg:text-6xl text-sumi dark:text-washi uppercase tracking-tight mb-4">
+          Merawat Tradisi, Menghidupkan Jiwa
+        </h1>
+        <p class="text-sm sm:text-base text-sumi/80 dark:text-washi/80 max-w-2xl mx-auto leading-relaxed">
+          Nama <strong class="text-aka">町 (Machi)</strong> berarti kota kecil atau kampung halaman. Machi didirikan pada
+          tahun 2015 di sebuah sudut tenang Tokyo sebelum membawa aromanya ke Senopati, Jakarta. Kami percaya semangkuk
+          ramen bukan sekadar makanan, melainkan sambutan hangat sebuah rumah untuk menenangkan hati yang lelah.
+        </p>
+
+        <!-- Milestone Counter Stats -->
+        <div
+          class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mt-12 pt-8 border-t border-sumi/10 dark:border-white/10 max-w-4xl mx-auto">
+          <div class="p-5 bg-white dark:bg-[#1f1b18] rounded-2xl border border-sumi/10 dark:border-white/10 shadow-sm">
+            <span class="font-heading font-black text-3xl sm:text-4xl text-aka block">2015</span>
+            <span class="text-xs text-sumi/60 dark:text-washi/60 mt-1 block font-medium">Tahun Berdiri</span>
+          </div>
+          <div class="p-5 bg-white dark:bg-[#1f1b18] rounded-2xl border border-sumi/10 dark:border-white/10 shadow-sm">
+            <span class="font-heading font-black text-3xl sm:text-4xl text-ai block">500k+</span>
+            <span class="text-xs text-sumi/60 dark:text-washi/60 mt-1 block font-medium">Mangkuk Disajikan</span>
+          </div>
+          <div class="p-5 bg-white dark:bg-[#1f1b18] rounded-2xl border border-sumi/10 dark:border-white/10 shadow-sm">
+            <span
+              class="font-heading font-black text-3xl sm:text-4xl text-matcha-dark dark:text-matcha block">100%</span>
+            <span class="text-xs text-sumi/60 dark:text-washi/60 mt-1 block font-medium">Uji Kyoto Matcha</span>
+          </div>
+          <div class="p-5 bg-white dark:bg-[#1f1b18] rounded-2xl border border-sumi/10 dark:border-white/10 shadow-sm">
+            <span class="font-heading font-black text-3xl sm:text-4xl text-amber-600 block">4.9 ★</span>
+            <span class="text-xs text-sumi/60 dark:text-washi/60 mt-1 block font-medium">Rating Kepuasan Tamu</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 2. THREE CORE PHILOSOPHIES (FULL-BLEED SECTION) ================= -->
+    <section
+      class="bg-asanoha py-16 sm:py-24 px-5 sm:px-8 lg:px-12 xl:px-20 border-b border-sumi/10 dark:border-white/10"
+      aria-labelledby="philosophy-title">
+      <div class="mx-auto w-full max-w-screen-2xl">
+        <div class="text-center mb-12">
+          <span class="text-xs font-bold text-aka uppercase tracking-widest font-heading">FILOSOFI DASAR</span>
+          <h2 id="philosophy-title"
+            class="font-heading font-black text-2xl sm:text-4xl text-sumi dark:text-washi uppercase mt-1">
+            Tiga Nilai yang Menuntun Setiap Mangkuk Machi
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
+
+          <!-- Card 1: Omotenashi -->
+          <article
+            class="bg-white dark:bg-[#1f1b18] rounded-3xl p-6 sm:p-8 border border-sumi/10 dark:border-white/10 shadow-sm hover:shadow-xl transition">
+            <span class="hanko-stamp text-xs px-3 py-1 rounded-full font-kanji font-bold mb-4 inline-block" lang="ja">
+              おもてなし
+            </span>
+            <h3 class="font-heading font-black text-xl text-sumi dark:text-washi mb-2">Omotenashi (Keramahan Rumah)</h3>
+            <p class="text-xs sm:text-sm text-sumi/70 dark:text-washi/70 leading-relaxed">
+              Keramahan tulus tanpa pamrih. Di kedai Machi, kami menyambut setiap pengunjung seperti keluarga yang
+              pulang ke kampung halaman, memperhatikan kenyamanan detail terkecil meja Anda.
+            </p>
+          </article>
+
+          <!-- Card 2: Ichigo Ichie -->
+          <article
+            class="bg-white dark:bg-[#1f1b18] rounded-3xl p-6 sm:p-8 border border-sumi/10 dark:border-white/10 shadow-sm hover:shadow-xl transition">
+            <span class="hanko-stamp text-xs px-3 py-1 rounded-full font-kanji font-bold mb-4 inline-block" lang="ja">
+              一期一会
+            </span>
+            <h3 class="font-heading font-black text-xl text-sumi dark:text-washi mb-2">Ichigo Ichie (Satu Momen
+              Berharga)</h3>
+            <p class="text-xs sm:text-sm text-sumi/70 dark:text-washi/70 leading-relaxed">
+              "Satu pertemuan, sekali seumur hidup." Setiap mangkuk ramen yang kami racik disajikan seolah-olah ini
+              adalah satu-satunya kesempatan kami menjamu Anda di meja makan.
+            </p>
+          </article>
+
+          <!-- Card 3: Kodawari -->
+          <article
+            class="bg-white dark:bg-[#1f1b18] rounded-3xl p-6 sm:p-8 border border-sumi/10 dark:border-white/10 shadow-sm hover:shadow-xl transition">
+            <span class="hanko-stamp text-xs px-3 py-1 rounded-full font-kanji font-bold mb-4 inline-block" lang="ja">
+              こだわり
+            </span>
+            <h3 class="font-heading font-black text-xl text-sumi dark:text-washi mb-2">Kodawari (Kesempurnaan Detail)
+            </h3>
+            <p class="text-xs sm:text-sm text-sumi/70 dark:text-washi/70 leading-relaxed">
+              Dedikasi tanpa kompromi terhadap temperatur kuah, tingkat kekenyalan mi, pemilihan daun teh Uji, dan rasa
+              manis alami dashi tanpa perasa buatan.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 3. STEP-BY-STEP RAMEN MAKING PROCESS (FULL-BLEED) ================= -->
+    <section class="w-full py-16 sm:py-24 px-5 sm:px-8 lg:px-12 xl:px-20 border-b border-sumi/10 dark:border-white/10"
+      aria-labelledby="process-title">
+      <div class="mx-auto w-full max-w-screen-2xl">
+        <div class="text-center mb-12">
+          <span class="text-xs font-bold text-aka uppercase tracking-widest font-heading">PROSES MEMBUAT</span>
+          <h2 id="process-title"
+            class="font-heading font-black text-2xl sm:text-4xl text-sumi dark:text-washi uppercase mt-1">
+            4 Langkah di Balik Semangkuk Machi
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+
+          <div
+            class="bg-white dark:bg-[#1f1b18] rounded-3xl p-6 border border-sumi/10 dark:border-white/10 shadow-sm relative">
+            <span class="font-heading font-black text-5xl text-aka/20 absolute top-4 right-5 select-none">01</span>
+            <span class="text-3xl mb-3 block" aria-hidden="true">🔥</span>
+            <h3 class="font-heading font-black text-base text-sumi dark:text-washi mb-1">Rebus Kaldu 18 Jam</h3>
+            <p class="text-xs text-sumi/60 dark:text-washi/60 leading-relaxed">Tulang dan rempah dipanaskan perlahan
+              terus-menerus hingga seluruh kolagen larut menghasilkan tekstur creamy alami.</p>
+          </div>
+
+          <div
+            class="bg-white dark:bg-[#1f1b18] rounded-3xl p-6 border border-sumi/10 dark:border-white/10 shadow-sm relative">
+            <span class="font-heading font-black text-5xl text-ai/20 absolute top-4 right-5 select-none">02</span>
+            <span class="text-3xl mb-3 block" aria-hidden="true">🌾</span>
+            <h3 class="font-heading font-black text-base text-sumi dark:text-washi mb-1">Mi Segar Setiap Fajar</h3>
+            <p class="text-xs text-sumi/60 dark:text-washi/60 leading-relaxed">Adonan mi gandum diuleni dan dipotong
+              setiap pagi untuk memastikan aroma gandum segar dan kenyal maksimal.</p>
+          </div>
+
+          <div
+            class="bg-white dark:bg-[#1f1b18] rounded-3xl p-6 border border-sumi/10 dark:border-white/10 shadow-sm relative">
+            <span
+              class="font-heading font-black text-5xl text-matcha-dark/20 absolute top-4 right-5 select-none">03</span>
+            <span class="text-3xl mb-3 block" aria-hidden="true">🥩</span>
+            <h3 class="font-heading font-black text-base text-sumi dark:text-washi mb-1">Torched Chashu Karamel</h3>
+            <p class="text-xs text-sumi/60 dark:text-washi/60 leading-relaxed">Daging dimarinasi lambat semalaman lalu
+              dibakar api torch tepat sebelum disajikan di mangkuk tamu.</p>
+          </div>
+
+          <div
+            class="bg-white dark:bg-[#1f1b18] rounded-3xl p-6 border border-sumi/10 dark:border-white/10 shadow-sm relative">
+            <span
+              class="font-heading font-black text-5xl text-amber-500/20 absolute top-4 right-5 select-none">04</span>
+            <span class="text-3xl mb-3 block" aria-hidden="true">🥢</span>
+            <h3 class="font-heading font-black text-base text-sumi dark:text-washi mb-1">Sajian Hangat Meja</h3>
+            <p class="text-xs text-sumi/60 dark:text-washi/60 leading-relaxed">Mangkuk keramik dipanaskan terlebih
+              dahulu agar kuah tetap pada temperatur optimal hingga suapan terakhir.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 4. TIMELINE PERJALANAN (FULL-BLEED SECTION) ================= -->
+    <section
+      class="bg-seigaiha py-16 sm:py-24 px-5 sm:px-8 lg:px-12 xl:px-20 border-b border-sumi/10 dark:border-white/10"
+      aria-labelledby="timeline-title">
+      <div class="mx-auto w-full max-w-screen-2xl">
+        <div class="text-center mb-12">
+          <span class="text-xs font-bold text-aka uppercase tracking-widest font-heading">TIMELINE</span>
+          <h2 id="timeline-title"
+            class="font-heading font-black text-2xl sm:text-4xl text-sumi dark:text-washi uppercase mt-1">
+            Garis Waktu Perjalanan Machi
+          </h2>
+        </div>
+
+        <div
+          class="max-w-3xl mx-auto bg-white dark:bg-[#1f1b18] rounded-3xl p-8 sm:p-12 border border-sumi/10 dark:border-white/10 shadow-xl">
+          <div class="relative border-l-2 border-aka/40 ml-4 sm:ml-8 space-y-10 py-2">
+
+            <div class="relative pl-6">
+              <span
+                class="absolute -left-2.5 top-1.5 w-5 h-5 rounded-full bg-aka border-4 border-washi dark:border-[#1f1b18]"></span>
+              <time class="font-heading font-black text-sm text-aka block">2015 — Awal Mula di Tokyo</time>
+              <p class="text-xs sm:text-sm text-sumi/70 dark:text-washi/70 mt-1 leading-relaxed">
+                Membuka kedai 8 kursi kecil di Yanaka, Tokyo, berfokus pada kuah tonkotsu tradisional dan racikan resep
+                keluarga yang ramah.
+              </p>
+            </div>
+
+            <div class="relative pl-6">
+              <span
+                class="absolute -left-2.5 top-1.5 w-5 h-5 rounded-full bg-ai border-4 border-washi dark:border-[#1f1b18]"></span>
+              <time class="font-heading font-black text-sm text-ai block">2019 — Kemitraan Petani Matcha Uji</time>
+              <p class="text-xs sm:text-sm text-sumi/70 dark:text-washi/70 mt-1 leading-relaxed">
+                Bekerja sama langsung dengan perkebunan teh tertua di Uji, Kyoto untuk mendatangkan bubuk ceremonial
+                matcha murni tanpa perantara.
+              </p>
+            </div>
+
+            <div class="relative pl-6">
+              <span
+                class="absolute -left-2.5 top-1.5 w-5 h-5 rounded-full bg-matcha-dark dark:bg-matcha border-4 border-washi dark:border-[#1f1b18]"></span>
+              <time class="font-heading font-black text-sm text-matcha-dark dark:text-matcha block">2022 — Membuka Gerai
+                di Senopati, Jakarta</time>
+              <p class="text-xs sm:text-sm text-sumi/70 dark:text-washi/70 mt-1 leading-relaxed">
+                Membawa aroma hangat dan filosofi kuliner Jepang ke Senopati dengan resep halal, dashi buah apel, dan
+                suasana santap yang tenang.
+              </p>
+            </div>
+
+            <div class="relative pl-6">
+              <span
+                class="absolute -left-2.5 top-1.5 w-5 h-5 rounded-full bg-aka border-4 border-washi dark:border-[#1f1b18]"></span>
+              <time class="font-heading font-black text-sm text-aka block">2026 — Kedai Favorit Machi Ramen &
+                Matcha</time>
+              <p class="text-xs sm:text-sm text-sumi/70 dark:text-washi/70 mt-1 leading-relaxed">
+                Menjadi ruang santap favorit para penikmat ramen dan matcha otentik di Jakarta Selatan dengan ratusan
+                ribu pelanggan setia.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 5. CHEF & ARTISAN PROFILE ================= -->
+    <section class="w-full py-16 sm:py-24 px-5 sm:px-8 lg:px-12 xl:px-20 border-b border-sumi/10 dark:border-white/10"
+      aria-labelledby="chefs-title">
+      <div class="mx-auto w-full max-w-screen-2xl">
+        <div class="text-center mb-12">
+          <span class="text-xs font-bold text-aka uppercase tracking-widest font-heading">PARA MASTER</span>
+          <h2 id="chefs-title"
+            class="font-heading font-black text-2xl sm:text-4xl text-sumi dark:text-washi uppercase mt-1">
+            Sosok di Balik Cita Rasa Machi
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
+
+          <article
+            class="bg-white dark:bg-[#1f1b18] rounded-3xl overflow-hidden border border-sumi/10 dark:border-white/10 shadow-sm text-center hover:shadow-xl transition">
+            <div class="h-60 bg-sumi/5 overflow-hidden">
+              <img src="assets/images/nanta.png"
+                alt="Ananta - Master Broth Specialist Machi" class="w-full h-full object-cover">
+            </div>
+            <div class="p-6">
+              <h3 class="font-heading font-black text-xl text-sumi dark:text-washi mb-0.5">Ananta</h3>
+              <p class="text-xs text-aka font-bold uppercase tracking-wider mb-1 font-heading">Master Broth Specialist</p>
+              <span class="text-xs text-aka font-bold block mb-2 font-kanji" lang="ja">出汁マスター</span>
+              <p class="text-xs text-sumi/60 dark:text-washi/60 leading-relaxed">20 tahun pengalaman meramu sari kaldu
+                ramen di Fukuoka dan Tokyo dengan keahlian kontrol suhu api presisi.</p>
+            </div>
+          </article>
+
+          <article
+            class="bg-white dark:bg-[#1f1b18] rounded-3xl overflow-hidden border border-sumi/10 dark:border-white/10 shadow-sm text-center hover:shadow-xl transition">
+            <div class="h-60 bg-sumi/5 overflow-hidden">
+              <img src="assets/images/nanta.png"
+                alt="Mahananta - Head Noodle Artisan Machi" class="w-full h-full object-cover">
+            </div>
+            <div class="p-6">
+              <h3 class="font-heading font-black text-xl text-sumi dark:text-washi mb-0.5">Mahananta</h3>
+              <p class="text-xs text-ai font-bold uppercase tracking-wider mb-1 font-heading">Head Noodle Artisan</p>
+              <span class="text-xs text-ai font-bold block mb-2 font-kanji" lang="ja">製麺職人</span>
+              <p class="text-xs text-sumi/60 dark:text-washi/60 leading-relaxed">Berlatih langsung di Yokohama untuk
+                pengolahan mi gandum segar bertekstur kenyal pas dan aromatik.</p>
+            </div>
+          </article>
+
+          <article
+            class="bg-white dark:bg-[#1f1b18] rounded-3xl overflow-hidden border border-sumi/10 dark:border-white/10 shadow-sm text-center hover:shadow-xl transition">
+            <div class="h-60 bg-sumi/5 overflow-hidden">
+              <img src="assets/images/nanta.png"
+                alt="Maharani - Kyoto Tea Sommelier Machi" class="w-full h-full object-cover">
+            </div>
+            <div class="p-6">
+              <h3 class="font-heading font-black text-xl text-sumi dark:text-washi mb-0.5">Maharani</h3>
+              <p class="text-xs text-matcha-dark dark:text-matcha font-bold uppercase tracking-wider mb-1 font-heading">Kyoto Tea Sommelier</p>
+              <span class="text-xs text-matcha-dark dark:text-matcha font-bold block mb-2 font-kanji"
+                lang="ja">茶道ソムリエ</span>
+              <p class="text-xs text-sumi/60 dark:text-washi/60 leading-relaxed">Praktisi upacara minum teh
+                bersertifikasi Uji Chado Master dengan pengetahuan mendalam gradasi rasa matcha.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 6. CALL TO ACTION BANNER (FULL-BLEED) ================= -->
+    <section class="w-full bg-sumi text-washi py-16 sm:py-20 px-5 sm:px-8 lg:px-12 xl:px-20 relative overflow-hidden"
+      aria-label="Ajak Bersantap">
+      <div class="mx-auto w-full max-w-4xl text-center relative z-10">
+        <span class="hanko-stamp text-xs px-3.5 py-1 rounded-full font-kanji font-bold mb-4 inline-block" lang="ja">
+          ご来店お待ちしております
+        </span>
+        <h2 class="font-heading font-black text-2xl sm:text-4xl uppercase mb-4">
+          Rasakan Sendiri Kehangatan Semangkuk Machi
+        </h2>
+        <p class="text-xs sm:text-sm text-washi/70 max-w-xl mx-auto mb-8 leading-relaxed">
+          Kunjungi kedai kami di Senopati Jakarta Selatan atau amankan mejamu sekarang sebelum antrean penuh.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="menu.html"
+            class="bg-aka hover:bg-aka-deep text-white font-heading font-extrabold text-xs sm:text-sm px-7 py-3.5 rounded-full shadow-lg transition transform hover:-translate-y-0.5">
+            Jelajahi Buku Menu 🥢
+          </a>
+          <a href="contact.html"
+            class="border border-washi/30 hover:border-washi text-washi font-heading font-bold text-xs sm:text-sm px-7 py-3.5 rounded-full hover:bg-white/10 transition">
+            Reservasi Meja Online
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER (FULL-BLEED) ================= -->
+  <footer class="w-full bg-sumi text-washi pt-14 pb-8 px-5 sm:px-8 lg:px-12 xl:px-20 border-t border-sumi/20">
+    <div class="mx-auto w-full max-w-screen-2xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+
+      <!-- Col 1: Brand Info -->
+      <div>
+        <div class="flex items-center gap-2.5 mb-4">
+          <div
+            class="w-8 h-8 rounded-xl bg-aka flex items-center justify-center text-white font-kanji font-black text-base">
+            町
+          </div>
+          <span class="font-heading font-black text-lg tracking-tight">MACHI RAMEN & MATCHA</span>
+        </div>
+        <p class="text-xs text-washi/70 leading-relaxed mb-4">
+          Kedai ramen otentik Jepang dan matcha bar tradisional di Senopati, Jakarta Selatan. Menyajikan kehangatan
+          resep rumahan yang ramah dan menenangkan hati.
+        </p>
+        <address class="not-italic text-xs text-washi/70 space-y-1">
+          <p>📍 Jl. Senopati No. 88, Jakarta Selatan 12190</p>
+          <p>📞 +62 812-3456-7890</p>
+          <p>✉️ <a href="mailto:hello@machi-ramen.id" class="hover:text-aka underline">hello@machi-ramen.id</a></p>
+        </address>
+      </div>
+
+      <!-- Col 2: Navigation Links -->
+      <div>
+        <h3 class="font-heading font-black text-sm uppercase tracking-wider mb-4 text-aka">Halaman Utama</h3>
+        <ul class="space-y-2 text-xs text-washi/70">
+          <li><a href="index.html" class="hover:text-aka transition">Beranda Utama</a></li>
+          <li><a href="menu.html" class="hover:text-aka transition">Daftar Menu & Kustomisasi</a></li>
+          <li><a href="promo.html" class="hover:text-aka transition">Voucher & Program Promo</a></li>
+          <li><a href="about.html" aria-current="page" class="text-aka font-bold">Kisah Kami & Filosofi</a></li>
+          <li><a href="contact.html" class="hover:text-aka transition">Reservasi & Kontak</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Operating Hours -->
+      <div>
+        <h3 class="font-heading font-black text-sm uppercase tracking-wider mb-4 text-aka">Jam Operasional</h3>
+        <ul class="space-y-2 text-xs text-washi/70">
+          <li class="flex justify-between">
+            <span>Senin – Jumat</span>
+            <span class="font-bold text-washi">10.00 – 22.00 WIB</span>
+          </li>
+          <li class="flex justify-between">
+            <span>Sabtu – Minggu</span>
+            <span class="font-bold text-washi">10.00 – 23.00 WIB</span>
+          </li>
+          <li class="flex justify-between">
+            <span>Kitchen Last Order</span>
+            <span class="font-bold text-aka">21.30 WIB</span>
+          </li>
+        </ul>
+        <div class="mt-4 p-3 bg-white/5 rounded-2xl border border-white/10 text-[11px] text-washi/80">
+          🍜 Tersedia Dine-in, Takeaway, dan Delivery via WhatsApp.
+        </div>
+      </div>
+
+      <!-- Col 4: WhatsApp Direct & Social -->
+      <div>
+        <h3 class="font-heading font-black text-sm uppercase tracking-wider mb-4 text-aka">Pemesanan Langsung</h3>
+        <p class="text-xs text-washi/70 mb-3">
+          Pesan cepat melalui WhatsApp resmi Machi dengan konfirmasi instan dari tim kedai.
+        </p>
+        <a href="https://wa.me/6281234567890?text=Halo%20Machi%20Ramen!%20Saya%20ingin%20memesan%20makanan."
+          target="_blank" rel="noopener"
+          class="inline-flex items-center justify-center gap-2 w-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-3 rounded-xl transition shadow-sm">
+          <span>Buka WhatsApp (+62 812-3456-7890)</span> 💬
+        </a>
+        <div class="flex gap-3 mt-4 text-washi/60 text-xs">
+          <a href="https://instagram.com" target="_blank" rel="noopener"
+            class="hover:text-aka transition">@machi.ramen</a>
+          <span>•</span>
+          <a href="https://tiktok.com" target="_blank" rel="noopener" class="hover:text-aka transition">TikTok</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Copyright Bar -->
+    <div
+      class="mx-auto w-full max-w-screen-2xl pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[11px] text-washi/50 gap-2">
+      <p>© 2026 Machi Ramen & Matcha. Hak Cipta Dilindungi Undang-Undang.</p>
+      <div class="flex items-center gap-4">
+        <a href="about.html" class="hover:underline">Kebijakan Privasi</a>
+        <a href="about.html" class="hover:underline">Ketentuan Layanan</a>
+        <a href="404.html" class="hover:underline">Halaman 404</a>
+        <span class="font-kanji text-aka font-bold" lang="ja">町 • ラーメン • 抹茶</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <a href="#top"
+    class="fixed bottom-6 right-6 z-30 p-3 bg-aka hover:bg-aka-deep text-white rounded-full shadow-xl transition transform hover:-translate-y-1"
+    aria-label="Kembali ke atas">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
+  </a>
+
+  <!-- Scripts: jQuery & Machi Core Interaction -->
+  <script src="./js/jquery-3.7.1.min.js"></script>
+  <script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.7.1.min.js"><\/script>')</script>
+  <script src="./js/main.js"></script>
+
+</body>
+
+</html>

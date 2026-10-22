@@ -1,0 +1,487 @@
+/* ==========================================================================
+   MACHI RAMEN & MATCHA — Custom CSS & Japanese Design System
+   Pure CSS & Semantic HTML5 (Zero Client-Side JavaScript)
+   
+   DAFTAR ISI:
+   1. Variabel CSS & Tipografi
+   2. Desain Poster: Sunburst, Clip-Path Pita, Starburst
+   3. Pola Jepang Tradisional (Seigaiha, Asanoha, Grid)
+   4. Ornamen Khas Jepang (Hanko, Noren, Tiket Bergerigi, Uap, Sakura)
+   5. Popover API (Drawer Mobile & Modal Menu)
+   6. Selektor Kondisional Form via CSS :has()
+   7. Kuis Rekomendasi Ramen via CSS :has()
+   8. Scroll-Driven Animation & Reduced Motion Accessibility
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+JP:wght@600;700;900&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Zen+Antique&display=swap');
+
+/* ==========================================================================
+   1. VARIABEL CSS & TIPOGRAFI
+   ========================================================================== */
+:root {
+  color-scheme: light;
+  --color-washi: #FFFFFF; /* Mengubah warna tema dasar washi menjadi warna putih bersih */
+  --color-sumi: #1A1A1A;
+  --color-aka: #E8401C;
+  --color-aka-deep: #B5300C;
+  --color-ai: #1B2F8F;
+  --color-ai-deep: #13226B;
+  --color-matcha: #7A9E3B;
+  --color-matcha-light: #DDE8C3;
+  --color-matcha-dark: #4F6B22;
+  --color-sakura: #F6C6D0;
+  --color-kin: #C9A24B;
+}
+
+/* ==========================================================================
+   PENGATURAN TEMA WARNA PUTIH (WHITE / LIGHT THEME)
+   ========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.font-heading {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.font-kanji {
+  font-family: 'Noto Serif JP', 'Zen Antique', serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #FFFFFF;
+}
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-track {
+    background: #FFFFFF;
+  }
+}
+::-webkit-scrollbar-thumb {
+  background: #E8401C;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B5300C;
+}
+
+/* ==========================================================================
+   2. DESAIN POSTER: SUNBURST, CLIP-PATH PITA, STARBURST
+   ========================================================================== */
+
+/* Radial Sunburst Rays untuk Poster Paket Andalan */
+.bg-sunburst {
+  background: repeating-conic-gradient(
+    from 0deg,
+    #E8401C 0deg 11.25deg,
+    #CF3614 11.25deg 22.5deg
+  );
+}
+
+/* Pita (Ribbon Tape) Clip-Path */
+.clip-ribbon {
+  clip-path: polygon(
+    0% 0%, 
+    100% 0%, 
+    calc(100% - 14px) 50%, 
+    100% 100%, 
+    0% 100%, 
+    14px 50%
+  );
+}
+
+.clip-ribbon-right {
+  clip-path: polygon(
+    0% 0%, 
+    100% 0%, 
+    calc(100% - 16px) 50%, 
+    100% 100%, 
+    0% 100%
+  );
+}
+
+.clip-ribbon-left {
+  clip-path: polygon(
+    16px 0%, 
+    100% 0%, 
+    100% 100%, 
+    16px 100%, 
+    0% 50%
+  );
+}
+
+/* Badge Starburst Bergerigi (16-Point Star) */
+.clip-starburst {
+  clip-path: polygon(
+    50% 0%, 63% 10%, 78% 5%, 83% 20%, 97% 24%, 93% 39%, 100% 50%, 
+    93% 61%, 97% 76%, 83% 80%, 78% 95%, 63% 90%, 50% 100%, 
+    37% 90%, 22% 95%, 17% 80%, 3% 76%, 7% 61%, 0% 50%, 
+    7% 39%, 3% 24%, 17% 20%, 22% 5%, 37% 10%
+  );
+}
+
+/* ==========================================================================
+   3. POLA JEPANG TRADISIONAL (SEIGAIHA, ASANOHA, GRID)
+   ========================================================================== */
+
+/* Hero Grid Pattern */
+.hero-grid-pattern {
+  background-color: #FFF4EA;
+  background-image: 
+    linear-gradient(to right, rgba(26, 26, 26, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(26, 26, 26, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .hero-grid-pattern {
+    background-color: #14110F;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  }
+}
+
+/* Seigaiha (Gelombang Laut Biru) */
+.bg-seigaiha {
+  background-color: #FFF4EA;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='35' viewBox='0 0 70 35'%3E%3Cg fill='none' stroke='%231B2F8F' stroke-opacity='0.08' stroke-width='1.5'%3E%3Cpath d='M0 35c0-19.33 15.67-35 35-35s35 15.67 35 35M7 35c0-15.46 12.54-28 28-28s28 12.54 28 28M14 35c0-11.6 9.4-21 21-21s21 9.4 21 21M21 35c0-7.73 6.27-14 14-14s14 6.27 14 14M28 35c0-3.87 3.13-7 7-7s7 3.13 7 7'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+@media (prefers-color-scheme: dark) {
+  .bg-seigaiha {
+    background-color: #14110F;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='35' viewBox='0 0 70 35'%3E%3Cg fill='none' stroke='%23E8401C' stroke-opacity='0.12' stroke-width='1.5'%3E%3Cpath d='M0 35c0-19.33 15.67-35 35-35s35 15.67 35 35M7 35c0-15.46 12.54-28 28-28s28 12.54 28 28M14 35c0-11.6 9.4-21 21-21s21 9.4 21 21M21 35c0-7.73 6.27-14 14-14s14 6.27 14 14M28 35c0-3.87 3.13-7 7-7s7 3.13 7 7'/%3E%3C/g%3E%3C/svg%3E");
+  }
+}
+
+/* Asanoha (Daun Rami) */
+.bg-asanoha {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='103.92' viewBox='0 0 60 103.92'%3E%3Cpath d='M30 0L60 17.32L60 51.96L30 69.28L0 51.96L0 17.32Z' fill='none' stroke='%23E8401C' stroke-opacity='0.05' stroke-width='1'/%3E%3Cpath d='M30 0L30 69.28M60 17.32L0 51.96M0 17.32L60 51.96' stroke='%23E8401C' stroke-opacity='0.04' stroke-width='1'/%3E%3C/svg%3E");
+}
+
+/* ==========================================================================
+   4. ORNAMEN KHAS JEPANG (HANKO, NOREN, TIKET, UAP, SAKURA)
+   ========================================================================== */
+
+/* Stempel Segel Hanko Bulat & Kotak */
+.hanko-stamp {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #E8401C;
+  color: #E8401C;
+  border-radius: 9999px;
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 700;
+  text-shadow: 0 0 1px rgba(232, 64, 28, 0.4);
+  background: rgba(232, 64, 28, 0.05);
+  box-shadow: inset 0 0 4px rgba(232, 64, 28, 0.2);
+}
+
+.hanko-stamp-square {
+  border: 2px solid #E8401C;
+  color: #E8401C;
+  border-radius: 6px;
+  font-family: 'Noto Serif JP', serif;
+  background: rgba(232, 64, 28, 0.08);
+}
+
+/* Tulisan Vertikal */
+.writing-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  letter-spacing: 0.15em;
+}
+
+/* Efek Tirai Noren */
+.noren-border {
+  border-bottom: 4px solid #1A1A1A;
+  position: relative;
+}
+.noren-border::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 8px;
+  background-color: #E8401C;
+  border-radius: 2px;
+}
+
+/* Animasi Uap Mangkuk Ramen */
+@keyframes steamFloat {
+  0% { transform: translateY(0) scaleX(1); opacity: 0; }
+  20% { opacity: 0.7; }
+  50% { transform: translateY(-16px) scaleX(1.3) translateX(3px); }
+  80% { opacity: 0.3; }
+  100% { transform: translateY(-30px) scaleX(1.6) translateX(-3px); }
+}
+
+.steam-1 { animation: steamFloat 3s ease-out infinite; }
+.steam-2 { animation: steamFloat 3.5s ease-out 1s infinite; }
+.steam-3 { animation: steamFloat 4s ease-out 1.8s infinite; }
+
+/* Floating Card Animation */
+@keyframes gentleFloatSlow {
+  0%, 100% { transform: translateY(0) rotate(var(--tw-rotate, 0deg)); }
+  50% { transform: translateY(-8px) rotate(var(--tw-rotate, 0deg)); }
+}
+
+.animate-float-slow {
+  animation: gentleFloatSlow 6s ease-in-out infinite;
+}
+
+/* Sakura Petals */
+@keyframes sakuraFall {
+  0% { top: -10%; transform: translateX(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.6; }
+  100% { top: 105%; transform: translateX(120px) rotate(360deg); opacity: 0; }
+}
+
+.sakura-petal {
+  position: absolute;
+  pointer-events: none;
+  background: radial-gradient(circle, #F6C6D0 40%, #f0aab8 100%);
+  border-radius: 80% 0 80% 0;
+  opacity: 0.7;
+  z-index: 10;
+  animation-name: sakuraFall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* Tiket Bergerigi Kupon Promo */
+.ticket-edge-left { position: relative; }
+.ticket-edge-left::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--color-washi);
+}
+@media (prefers-color-scheme: dark) {
+  .ticket-edge-left::before { background-color: #14110F; }
+}
+
+.ticket-edge-right { position: relative; }
+.ticket-edge-right::after {
+  content: '';
+  position: absolute;
+  right: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--color-washi);
+}
+@media (prefers-color-scheme: dark) {
+  .ticket-edge-right::after { background-color: #14110F; }
+}
+
+/* Marquee Running Text */
+@keyframes marqueeScroll {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: 200%;
+  animation: marqueeScroll 28s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ==========================================================================
+   5. POPOVER API (DRAWER MOBILE & MODAL MENU)
+   ========================================================================== */
+
+/* Popover Backdrop - Hanya aktif saat popover terbuka */
+[popover]::backdrop {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+[popover]:popover-open::backdrop {
+  background: rgba(26, 26, 26, 0.75);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* Mobile Navigation Drawer */
+#menu-mobile[popover] {
+  position: fixed;
+  inset: 0 0 0 auto;
+  width: min(85vw, 340px);
+  height: 100vh;
+  margin: 0;
+  border: none;
+  background: transparent;
+  padding: 0;
+  transform: translateX(100%);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#menu-mobile[popover]:popover-open {
+  transform: translateX(0);
+}
+
+/* Menu Detail & Order Modal Sheet (Pure CSS Popover API) */
+.menu-modal[popover] {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(94vw, 42rem);
+  max-height: 90svh;
+  overflow-y: auto;
+  border-radius: 1.75rem;
+  border: 3px solid #1A1A1A;
+  background-color: #FFF4EA !important;
+  color: #1A1A1A !important;
+  transform: scale(0.95);
+  opacity: 0;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+
+.menu-modal[popover]:popover-open {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.menu-modal[popover] h2,
+.menu-modal[popover] h3,
+.menu-modal[popover] p,
+.menu-modal[popover] strong,
+.menu-modal[popover] label,
+.menu-modal[popover] legend {
+  color: #1A1A1A;
+}
+
+.menu-modal[popover] .text-aka {
+  color: #E8401C !important;
+}
+
+.menu-modal[popover] .text-white {
+  color: #ffffff !important;
+}
+
+.menu-modal[popover] input[type="text"],
+.menu-modal[popover] input[type="tel"],
+.menu-modal[popover] input[type="number"],
+.menu-modal[popover] input[type="time"],
+.menu-modal[popover] textarea,
+.menu-modal[popover] select {
+  background-color: #FFFFFF !important;
+  color: #1A1A1A !important;
+  border-color: rgba(26, 26, 26, 0.25) !important;
+}
+
+.menu-modal[popover] input:focus,
+.menu-modal[popover] textarea:focus,
+.menu-modal[popover] select:focus {
+  border-color: #E8401C !important;
+  outline: 2px solid #E8401C !important;
+}
+
+/* ==========================================================================
+   6. SELEKTOR KONDISIONAL FORM VIA CSS :has()
+   ========================================================================== */
+
+/* Kolom alamat & nomor meja tersembunyi secara default */
+.field-antar,
+.field-meja {
+  display: none;
+}
+
+/* Muncul bila radio terkait dipilih */
+form:has(input[value="antar"]:checked) .field-antar {
+  display: block !important;
+}
+
+form:has(input[value="meja"]:checked) .field-meja {
+  display: block !important;
+}
+
+/* ==========================================================================
+   7. KUIS REKOMENDASI RAMEN VIA CSS :has() (INDEX.HTML)
+   ========================================================================== */
+.quiz-result-card {
+  display: none;
+}
+
+body:has(#q-broth-rich:checked):has(#q-meat-chashu:checked) #quiz-tonkotsu,
+body:has(#q-broth-rich:checked):has(#q-meat-light:checked) #quiz-miso,
+body:has(#q-broth-light:checked):has(#q-meat-chashu:checked) #quiz-tantanmen,
+body:has(#q-broth-light:checked):has(#q-meat-light:checked) #quiz-yuzu {
+  display: block !important;
+}
+
+body:has(#q-broth-rich:checked) label[for="q-broth-rich"],
+body:has(#q-broth-light:checked) label[for="q-broth-light"],
+body:has(#q-meat-chashu:checked) label[for="q-meat-chashu"],
+body:has(#q-meat-light:checked) label[for="q-meat-light"] {
+  border-color: #E8401C !important;
+  background-color: rgba(232, 64, 28, 0.08) !important;
+  color: #E8401C !important;
+}
+
+/* ==========================================================================
+   8. SCROLL-DRIVEN ANIMATION & REDUCED MOTION ACCESSIBILITY
+   ========================================================================== */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll-fade-up {
+      animation: scrollFadeUp linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 30%;
+    }
+    @keyframes scrollFadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-marquee {
+    animation: none !important;
+    transform: none !important;
+  }
+  .sakura-petal {
+    display: none !important;
+  }
+}
+
+/* Matikan loading screen di seluruh website */
+#preloader {
+  display: none !important;
+}
+
+body {
+  overflow: auto !important;
+  animation: none !important;
+}

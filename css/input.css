@@ -1,0 +1,121 @@
+/*
+  Machi Ramen & Matcha: sumber Tailwind CSS v4.
+  Build (Windows, Tailwind CLI standalone, tanpa Node/npm):
+    .\tools\tailwindcss.exe -i .\css\input.css -o .\css\output.css --minify
+  Mode pantau saat mengedit:
+    .\tools\tailwindcss.exe -i .\css\input.css -o .\css\output.css --watch
+*/
+@import "tailwindcss";
+@source "../*.html";
+@source "./*.html";
+@source "../**/*.html";
+@source "..";
+
+@theme {
+  /* Tipografi */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-kanji: "Noto Serif JP", "Zen Antique", serif;
+
+  /* Warna merek */
+  --color-washi: #fff4ea;
+  --color-sumi: #1a1a1a;
+  --color-aka: #e8401c;
+  --color-aka-deep: #b5300c;
+  --color-ai: #1b2f8f;
+  --color-ai-deep: #13226b;
+  --color-matcha: #7a9e3b;
+  --color-matcha-light: #dde8c3;
+  --color-matcha-dark: #4f6b22;
+  --color-sakura: #f6c6d0;
+  --color-kin: #c9a24b;
+
+  --color-paper: #fff4ea;
+  --color-card: #ffffff;
+  --color-ink: #1a1a1a;
+  --color-beni: #b5300c;
+
+  --container-screen-2xl: 96rem;
+
+  /* Animasi Preloader Cepat & Ringan */
+  --animate-slurp: slurp 0.4s ease-in-out infinite;
+  --animate-tilt: tilt 0.8s ease-in-out infinite;
+  --animate-scene1: scene1 1.6s linear infinite;
+  --animate-scene2: scene2 1.6s linear infinite;
+  --animate-pop: pop 0.8s ease-in-out infinite;
+  --animate-fill: fill 1.6s linear forwards;
+  --animate-fade-out: fade-out 0.3s ease-in 1.7s forwards;
+  --animate-unlock: unlock 0s 1.7s forwards;
+  --animate-sway: sway 2s ease-in-out infinite;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-steam: steam 3.2s ease-out infinite;
+  --animate-float: float 7s ease-in-out infinite;
+
+  @keyframes slurp {
+    0%, 100% { transform: translateY(0) scaleY(1); }
+    50% { transform: translateY(-10px) scaleY(1.2); }
+  }
+  @keyframes tilt {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(-24deg) translateY(-5px); }
+  }
+  @keyframes scene1 {
+    0%, 45% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
+  @keyframes scene2 {
+    0%, 45% { opacity: 0; }
+    50%, 95% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  @keyframes pop {
+    0%, 100% { transform: scale(0); }
+    30%, 70% { transform: scale(1); }
+  }
+  @keyframes fill {
+    from { width: 0%; }
+    to { width: 100%; }
+  }
+  @keyframes fade-out {
+    to { opacity: 0; visibility: hidden; pointer-events: none; }
+  }
+  @keyframes unlock {
+    to { overflow: auto; }
+  }
+  @keyframes sway {
+    0%, 100% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+  }
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
+  @keyframes steam {
+    0% { translate: 0 0; scale: 1 1; opacity: 0; }
+    25% { opacity: 0.85; }
+    100% { translate: 0 -2.25rem; scale: 1.6 1.2; opacity: 0; }
+  }
+  @keyframes float {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -0.6rem; }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-paper: #14110f;
+    --color-card: #211b18;
+    --color-ink: #f3e9dc;
+    --color-beni: #ff8a65;
+  }
+}
+
+@layer base {
+  :root { color-scheme: light dark; }
+  button:not(:disabled), label[for], summary, [popovertarget] { cursor: pointer; }
+  :where(a, button, input, select, textarea, summary, label, [tabindex]):focus-visible {
+    outline: 3px solid var(--color-beni);
+    outline-offset: 3px;
+  }
+  summary { list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+}
