@@ -1,0 +1,889 @@
+/* ==========================================================================
+   MACHI RAMEN & MATCHA — Stylesheet Patokan Persis index.html
+   Tema: Washi (#FFF4EA), Sumi (#1A1A1A), Aka (#E8401C), Matcha (#7A9E3B)
+   ========================================================================== */
+
+/* Wrapper Halaman Penuh */
+.machi-page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-washi);
+  color: var(--color-sumi);
+  font-family: var(--font-sans);
+}
+
+/* ==========================================================================
+   1. HEADER & NAVBAR (PERSIS INDEX.HTML)
+   ========================================================================== */
+.machi-header-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+}
+
+.machi-navbar {
+  width: 100%;
+  background-color: rgba(255, 244, 234, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+  padding: 14px 24px;
+}
+
+.navbar-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Brand Logo Machi */
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.brand-logo-badge {
+  width: 42px;
+  height: 42px;
+  background-color: var(--color-aka);
+  color: #ffffff;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-kanji);
+  font-size: 22px;
+  font-weight: 900;
+  box-shadow: 0 4px 10px rgba(232, 64, 28, 0.25);
+  flex-shrink: 0;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: -0.3px;
+  color: var(--color-sumi);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1.1;
+}
+
+.brand-kana {
+  color: var(--color-aka);
+  font-family: var(--font-kanji);
+  font-size: 0.85rem;
+}
+
+.brand-sub {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.6);
+  margin-top: 2px;
+}
+
+/* Desktop Navigation */
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.8);
+}
+
+.nav-item {
+  cursor: pointer;
+  transition: color 0.15s ease;
+  padding-bottom: 2px;
+}
+
+.nav-item:hover {
+  color: var(--color-aka);
+}
+
+.nav-active {
+  color: var(--color-aka);
+  border-bottom: 2px solid var(--color-aka);
+}
+
+/* Tagline Pill Kanan */
+.nav-tagline-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.nav-tagline-pill {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-sumi);
+  background-color: #ffffff;
+  border: 1px solid rgba(26, 26, 26, 0.15);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* ==========================================================================
+   2. RUNNING MARQUEE STRIP (PERSIS INDEX.HTML)
+   ========================================================================== */
+.machi-marquee-strip {
+  width: 100%;
+  background-color: var(--color-aka);
+  color: #ffffff;
+  padding: 10px 0;
+  overflow: hidden;
+  user-select: none;
+  border-bottom: 1px solid var(--color-aka-deep);
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  white-space: nowrap;
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: marquee-scroll 35s linear infinite;
+  width: max-content;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ==========================================================================
+   3. HERO BANNER (PERSIS INDEX.HTML)
+   ========================================================================== */
+.machi-hero-banner {
+  padding: 48px 24px 36px;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+  background: radial-gradient(circle at 80% 20%, rgba(232, 64, 28, 0.06), transparent 50%);
+}
+
+.hero-content-wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.hero-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  border: 1px solid var(--color-aka);
+  background-color: rgba(232, 64, 28, 0.06);
+  color: var(--color-aka);
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.hero-pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-aka);
+}
+
+.hero-giant-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4.5vw, 3.6rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  color: var(--color-sumi);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.hero-inline-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: var(--color-aka);
+  border-radius: 16px;
+  font-size: 24px;
+  vertical-align: middle;
+  transform: rotate(-6deg);
+  box-shadow: 0 4px 10px rgba(232, 64, 28, 0.3);
+  margin: 0 6px;
+}
+
+.hero-hanko-stamp {
+  display: inline-block;
+  font-family: var(--font-kanji);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-aka);
+  border: 1.5px solid var(--color-aka);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+
+.hero-description {
+  font-size: 1rem;
+  color: rgba(26, 26, 26, 0.8);
+  max-width: 720px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.hero-trust-bar {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(26, 26, 26, 0.1);
+  font-size: 12px;
+  color: rgba(26, 26, 26, 0.7);
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.trust-stars {
+  color: #f59e0b;
+  font-size: 14px;
+}
+
+.trust-separator {
+  color: rgba(26, 26, 26, 0.2);
+}
+
+/* ==========================================================================
+   4. APPLIKASI UTAMA (CONTAINER & DUA KOLOM)
+   ========================================================================== */
+.machi-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 36px 24px 60px;
+  width: 100%;
+}
+
+/* Ringkasan Statistik */
+.machi-summary-section {
+  margin-bottom: 36px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.summary-card {
+  background-color: #ffffff;
+  border: 1px solid rgba(26, 26, 26, 0.12);
+  border-radius: 24px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 2px 8px rgba(26, 26, 26, 0.04);
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.summary-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(26, 26, 26, 0.07);
+}
+
+.summary-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+  background-color: var(--color-washi);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  flex-shrink: 0;
+}
+
+.summary-ramen-icon {
+  background-color: #fdeee9;
+}
+
+.summary-matcha-icon {
+  background-color: #edf5e5;
+}
+
+.summary-text-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-label {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--color-sumi-muted);
+  text-transform: uppercase;
+}
+
+.summary-value-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.summary-number {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--color-sumi);
+  line-height: 1.1;
+}
+
+.text-aka {
+  color: var(--color-aka);
+}
+
+.text-matcha {
+  color: var(--color-matcha);
+}
+
+.summary-unit {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-sumi-light);
+}
+
+.summary-hanko {
+  margin-left: auto;
+  font-family: var(--font-kanji);
+  font-size: 11px;
+  font-weight: 700;
+  border: 1px solid rgba(26, 26, 26, 0.15);
+  padding: 4px 8px;
+  border-radius: 8px;
+  color: var(--color-sumi-muted);
+}
+
+.hanko-aka {
+  border-color: #f8c3b7;
+  color: var(--color-aka);
+  background-color: #fdf2f0;
+}
+
+.hanko-matcha {
+  border-color: #c8e0a2;
+  color: var(--color-matcha);
+  background-color: #f4f8ed;
+}
+
+/* Tata Letak Dua Kolom */
+.machi-main-grid {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ==========================================================================
+   5. FORM TAMBAH MENU (BENTO CARD PERSIS INDEX.HTML)
+   ========================================================================== */
+.form-bento-card {
+  background-color: #ffffff;
+  border: 1px solid rgba(26, 26, 26, 0.12);
+  border-radius: 28px;
+  padding: 28px;
+  box-shadow: 0 4px 16px rgba(26, 26, 26, 0.04);
+}
+
+.form-card-header {
+  margin-bottom: 22px;
+}
+
+.form-eyebrow,
+.section-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--color-aka);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.eyebrow-dot {
+  font-size: 10px;
+}
+
+.form-main-title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: -0.3px;
+  color: var(--color-sumi);
+  text-transform: uppercase;
+}
+
+.form-sub-text {
+  font-size: 12px;
+  color: var(--color-sumi-muted);
+  margin-top: 4px;
+}
+
+.form-alert-error {
+  background-color: #fdf2f0;
+  color: #b52a0a;
+  border: 1px solid #f8c3b7;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.machi-entry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-block label {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--color-sumi);
+}
+
+.field-block input,
+.field-block select,
+.field-block textarea {
+  width: 100%;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--color-sumi);
+  background-color: #ffffff;
+  border: 1.5px solid rgba(26, 26, 26, 0.15);
+  border-radius: 14px;
+  padding: 11px 14px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.field-block input:focus,
+.field-block select:focus,
+.field-block textarea:focus {
+  outline: none;
+  border-color: var(--color-aka);
+  box-shadow: 0 0 0 3px rgba(232, 64, 28, 0.15);
+}
+
+.field-block textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.btn-machi-submit {
+  min-height: 48px;
+  background-color: var(--color-aka);
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  padding: 0 24px;
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(232, 64, 28, 0.28);
+  transition: all 0.2s ease;
+}
+
+.btn-machi-submit:hover {
+  background-color: var(--color-aka-deep);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(232, 64, 28, 0.38);
+}
+
+.btn-machi-submit:active {
+  transform: translateY(1px);
+}
+
+.btn-machi-submit:focus-visible {
+  outline: 3px solid var(--color-sumi);
+  outline-offset: 2px;
+}
+
+.btn-arrow {
+  font-size: 11px;
+}
+
+/* ==========================================================================
+   6. DAFTAR MENU (PERSIS MENU TERPOPULER MACHI DI INDEX.HTML)
+   ========================================================================== */
+.machi-list-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.popular-header-bar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.popular-main-title {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: var(--color-sumi);
+}
+
+.popular-counter-badge {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--color-sumi);
+  background-color: #ffffff;
+  border: 1px solid rgba(26, 26, 26, 0.15);
+  padding: 6px 16px;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+/* Pesan Kosong (Wajib bertuliskan persis 'Belum ada data Menu') */
+.empty-state-card {
+  background-color: #ffffff;
+  border: 2px dashed rgba(26, 26, 26, 0.2);
+  border-radius: 28px;
+  padding: 60px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-hanko-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid rgba(26, 26, 26, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-kanji);
+  font-size: 28px;
+  font-weight: 900;
+  color: rgba(26, 26, 26, 0.25);
+  margin-bottom: 14px;
+}
+
+.empty-state-message {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--color-sumi);
+}
+
+.empty-state-help {
+  font-size: 13px;
+  color: var(--color-sumi-muted);
+  margin-top: 6px;
+}
+
+/* List Menu Terpopuler */
+.popular-menu-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+/* Kartu Menu Terpopuler (Format index.html lines 507-537) */
+.popular-menu-card {
+  background-color: #ffffff;
+  border-radius: 24px;
+  padding: 18px 22px;
+  border: 1px solid rgba(26, 26, 26, 0.1);
+  box-shadow: 0 2px 8px rgba(26, 26, 26, 0.03);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.3s ease;
+}
+
+.popular-menu-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(26, 26, 26, 0.08);
+}
+
+/* Foto Bulat dengan Hanko Stamp */
+.card-figure-circle {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+}
+
+.card-circle-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(26, 26, 26, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.popular-menu-card:hover .card-circle-img {
+  transform: scale(1.05);
+}
+
+.hanko-stamp-square {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  font-family: var(--font-kanji);
+  font-size: 10px;
+  font-weight: 900;
+  background-color: #ffffff;
+  color: var(--color-aka);
+  border: 1.5px solid var(--color-aka);
+  padding: 1px 4px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Isi Info Kartu */
+.card-info-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.card-title-text {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--color-sumi);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.15s ease;
+}
+
+.popular-menu-card:hover .card-title-text {
+  color: var(--color-aka);
+}
+
+/* Badge Kategori */
+.category-pill-badge {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+.badge-ramen {
+  background-color: #fdeee9;
+  color: var(--color-aka);
+  border: 1px solid #f8c3b7;
+}
+
+.badge-matcha {
+  background-color: #edf5e5;
+  color: var(--color-matcha);
+  border: 1px solid #c8e0a2;
+}
+
+.badge-sushi {
+  background-color: #eaf1fb;
+  color: var(--color-ai);
+  border: 1px solid #bad2f7;
+}
+
+.badge-sidedish {
+  background-color: #fbf5ea;
+  color: var(--color-kin);
+  border: 1px solid #ebdcb8;
+}
+
+.card-desc-text {
+  font-size: 12px;
+  color: rgba(26, 26, 26, 0.65);
+  line-height: 1.5;
+  margin-top: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Bar Aksi: Harga & Tombol Hapus */
+.card-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.card-price-value {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--color-aka);
+}
+
+.btn-delete-circle {
+  width: 36px;
+  height: 36px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 1px solid rgba(26, 26, 26, 0.15);
+  color: rgba(26, 26, 26, 0.4);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-delete-circle:hover {
+  background-color: #fdf2f0;
+  border-color: var(--color-aka);
+  color: var(--color-aka);
+  transform: rotate(90deg);
+}
+
+.btn-delete-circle:focus-visible {
+  outline: 3px solid var(--color-aka);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   7. FOOTER PERSIS INDEX.HTML
+   ========================================================================== */
+.machi-site-footer {
+  margin-top: auto;
+  padding: 32px 24px;
+  border-top: 1px solid rgba(26, 26, 26, 0.1);
+  text-align: center;
+  font-size: 12px;
+  color: rgba(26, 26, 26, 0.6);
+  background-color: var(--color-washi);
+}
+
+/* ==========================================================================
+   RESPONSIVE: MOBILE BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .machi-main-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .summary-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .popular-header-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .popular-menu-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .card-figure-circle {
+    width: 72px;
+    height: 72px;
+  }
+
+  .card-info-content {
+    width: 100%;
+  }
+
+  .hero-giant-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-inline-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 20px;
+  }
+}
