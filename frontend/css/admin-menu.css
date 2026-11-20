@@ -1,0 +1,256 @@
+/* ==========================================================================
+   MACHI Japanese Restaurant: Admin Menu Management Stylesheet
+   Dedicated stylesheet for admin-menu.html
+   Palette: Warm Cream (#FFF3E8), Sumi (#191919), Vermilion (#D93612), Deep Navy (#20358F)
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+  --admin-washi: #FFF3E8;
+  --admin-paper: #FFFBF5;
+  --admin-sumi: #191919;
+  --admin-aka: #D93612;
+  --admin-aka-deep: #B82C0E;
+  --admin-ai: #20358F;
+  --admin-ai-deep: #17276B;
+  --admin-karashi: #E9AC38;
+  --admin-matcha: #4F6B22;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body.admin-body {
+  background-color: var(--admin-washi);
+  color: var(--admin-sumi);
+  min-height: 100vh;
+}
+
+.admin-panel {
+  background-color: var(--admin-paper);
+  border: 2px solid var(--admin-sumi);
+  border-radius: 1rem;
+  box-shadow: 4px 4px 0 var(--admin-sumi);
+}
+
+.admin-panel-navy {
+  background-color: var(--admin-ai);
+  color: #FFFFFF;
+  border: 2px solid var(--admin-sumi);
+  border-radius: 1rem;
+  box-shadow: 4px 4px 0 var(--admin-sumi);
+}
+
+.admin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.625rem 1.125rem;
+  border-radius: 0.75rem;
+  border: 2px solid var(--admin-sumi);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 0.8125rem;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.admin-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.admin-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.admin-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.admin-btn-primary {
+  background-color: var(--admin-aka-deep);
+  color: #FFFFFF;
+  box-shadow: 3px 3px 0 var(--admin-sumi);
+}
+
+.admin-btn-primary:hover:not(:disabled) {
+  background-color: var(--admin-sumi);
+}
+
+.admin-btn-navy {
+  background-color: var(--admin-ai);
+  color: #FFFFFF;
+  box-shadow: 3px 3px 0 var(--admin-sumi);
+}
+
+.admin-btn-navy:hover:not(:disabled) {
+  background-color: var(--admin-ai-deep);
+}
+
+.admin-btn-secondary {
+  background-color: #FFFFFF;
+  color: var(--admin-sumi);
+}
+
+.admin-btn-secondary:hover:not(:disabled) {
+  background-color: var(--admin-washi);
+}
+
+.admin-btn-danger {
+  background-color: #FFFFFF;
+  color: var(--admin-aka-deep);
+  border-color: var(--admin-aka-deep);
+}
+
+.admin-btn-danger:hover:not(:disabled) {
+  background-color: var(--admin-aka-deep);
+  color: #FFFFFF;
+}
+
+.admin-input,
+.admin-select,
+.admin-textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.625rem 0.875rem;
+  border-radius: 0.75rem;
+  border: 2px solid rgba(25, 25, 25, 0.28);
+  background-color: #FFFFFF;
+  color: var(--admin-sumi);
+  font-size: 0.875rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.admin-textarea {
+  min-height: 92px;
+  resize: vertical;
+}
+
+.admin-input:focus-visible,
+.admin-select:focus-visible,
+.admin-textarea:focus-visible {
+  outline: 3px solid var(--admin-aka-deep);
+  outline-offset: 2px;
+  border-color: var(--admin-sumi);
+}
+
+.admin-menu-card {
+  background-color: #FFFFFF;
+  border: 2px solid var(--admin-sumi);
+  border-radius: 0.875rem;
+  padding: 1.125rem;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.admin-menu-card:hover {
+  box-shadow: 3px 3px 0 var(--admin-sumi);
+}
+
+.admin-menu-card.is-editing {
+  border-color: var(--admin-ai);
+  box-shadow: 4px 4px 0 var(--admin-ai);
+  background-color: #F7F9FF;
+}
+
+.admin-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.45rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border: 1.5px solid var(--admin-sumi);
+}
+
+.admin-badge-category {
+  background-color: var(--admin-ai);
+  color: #FFFFFF;
+}
+
+.admin-badge-available {
+  background-color: #E7F3DB;
+  color: #2B4510;
+  border-color: #4F6B22;
+}
+
+.admin-badge-unavailable {
+  background-color: #FDE8E4;
+  color: #8F1D08;
+  border-color: var(--admin-aka-deep);
+}
+
+.admin-spinner {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 9999px;
+  border: 3px solid rgba(25, 25, 25, 0.18);
+  border-top-color: var(--admin-aka-deep);
+  animation: adminSpin 0.7s linear infinite;
+}
+
+@keyframes adminSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Notification Toast */
+.admin-toast {
+  border: 2px solid var(--admin-sumi);
+  border-radius: 0.875rem;
+  box-shadow: 4px 4px 0 var(--admin-sumi);
+  padding: 0.875rem 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+.admin-toast-success {
+  background-color: #E7F3DB;
+  color: #1F350A;
+}
+
+.admin-toast-error {
+  background-color: #FDE8E4;
+  color: #7A1806;
+}
+
+.admin-toast-info {
+  background-color: #EDF1FF;
+  color: #13226B;
+}
+
+/* Native dialog styling */
+dialog.admin-dialog {
+  margin: auto;
+  padding: 0;
+  border: 2px solid var(--admin-sumi);
+  border-radius: 1rem;
+  background-color: var(--admin-paper);
+  color: var(--admin-sumi);
+  box-shadow: 6px 6px 0 var(--admin-sumi);
+  width: min(92vw, 26rem);
+}
+
+dialog.admin-dialog::backdrop {
+  background: rgba(25, 25, 25, 0.65);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-spinner {
+    animation: none;
+  }
+  .admin-btn,
+  .admin-menu-card {
+    transition: none;
+  }
+}

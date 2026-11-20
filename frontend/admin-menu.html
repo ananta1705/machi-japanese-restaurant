@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Katalog Menu | MACHI Japanese Restaurant</title>
+  <meta name="description" content="Halaman administrasi katalog menu MACHI Japanese Restaurant yang terhubung langsung ke REST API NestJS.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%23D93612'/><text x='50' y='72' font-size='65' font-family='serif' font-weight='900' fill='white' text-anchor='middle'>町</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+JP:wght@700;900&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./css/output.css">
+  <link rel="stylesheet" href="./css/admin-menu.css">
+</head>
+<body class="admin-body flex flex-col">
+
+  <!-- Skip Link -->
+  <a href="#admin-main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 bg-aka-deep text-white px-5 py-2.5 rounded-xl font-bold shadow-lg">
+    Loncat ke konten admin
+  </a>
+
+  <!-- ================= HEADER ================= -->
+  <header class="sticky top-0 z-40 w-full bg-washi/95 backdrop-blur-md border-b-2 border-sumi">
+    <div class="mx-auto w-full max-w-screen-2xl px-5 sm:px-8 lg:px-12 py-3.5 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-2.5 group" aria-label="Kembali ke Beranda Machi">
+          <div class="w-10 h-10 rounded-xl bg-aka border-2 border-sumi flex items-center justify-center text-white font-kanji font-black text-xl">
+            町
+          </div>
+          <div>
+            <span class="font-heading font-black text-lg tracking-tight text-sumi flex items-center gap-1.5">
+              MACHI <span class="text-aka-deep text-xs font-kanji" lang="ja">管理</span>
+            </span>
+            <span class="block text-[10px] uppercase font-bold tracking-widest text-sumi/70">ADMIN MENU API</span>
+          </div>
+        </a>
+        <span id="api-status-badge" class="admin-badge admin-badge-available">Memeriksa API...</span>
+      </div>
+
+      <nav class="flex flex-wrap items-center gap-3 text-xs font-heading font-extrabold uppercase tracking-wider" aria-label="Navigasi Admin">
+        <a href="index.html" class="min-h-[44px] inline-flex items-center px-3 py-2 rounded-xl hover:bg-sumi/5 text-sumi transition">Beranda</a>
+        <a href="menu.html" class="min-h-[44px] inline-flex items-center px-3 py-2 rounded-xl hover:bg-sumi/5 text-sumi transition">Halaman Menu</a>
+        <a href="admin-menu.html" aria-current="page" class="min-h-[44px] inline-flex items-center px-3.5 py-2 rounded-xl bg-ai text-white border-2 border-sumi">Admin Menu</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Toast Notification Region -->
+  <div id="admin-toast-region" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2.5 w-[min(92vw,24rem)]" aria-live="polite"></div>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main id="admin-main" class="flex-1 mx-auto w-full max-w-screen-2xl px-5 sm:px-8 lg:px-12 py-8 sm:py-10">
+
+    <!-- Top Overview Strip -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8 items-stretch" aria-labelledby="admin-page-title">
+      <div class="lg:col-span-7 admin-panel p-6 sm:p-7 flex flex-col justify-between">
+        <div>
+          <span class="text-xs font-heading font-extrabold uppercase tracking-widest text-aka-deep block mb-1.5" lang="ja">メニュー管理 • NESTJS REST API</span>
+          <h1 id="admin-page-title" class="font-heading font-black text-2xl sm:text-3xl lg:text-4xl text-sumi uppercase leading-tight">
+            Manajemen Katalog Menu Machi
+          </h1>
+          <p class="text-sm text-sumi/80 mt-2 max-w-2xl leading-relaxed">
+            Kelola data menu makanan dan minuman secara langsung melalui endpoint <code class="font-mono text-xs bg-washi px-1.5 py-0.5 rounded border border-sumi/20">http://localhost:3000/menus</code> (GET, POST, PATCH, DELETE).
+          </p>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 admin-panel-navy p-6 grid grid-cols-3 gap-4 items-center">
+        <div>
+          <span class="text-[11px] font-heading font-bold uppercase tracking-wider text-washi/80 block">Total Menu</span>
+          <strong id="stat-total-menus" class="font-heading font-black text-3xl text-white mt-1 block">0</strong>
+        </div>
+        <div class="border-l border-white/20 pl-4">
+          <span class="text-[11px] font-heading font-bold uppercase tracking-wider text-washi/80 block">Tersedia</span>
+          <strong id="stat-available-menus" class="font-heading font-black text-3xl text-karashi mt-1 block">0</strong>
+        </div>
+        <div class="border-l border-white/20 pl-4">
+          <span class="text-[11px] font-heading font-bold uppercase tracking-wider text-washi/80 block">Kategori</span>
+          <strong id="stat-categories-count" class="font-heading font-black text-3xl text-white mt-1 block">0</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- Asymmetric 2-Column Workspace: Left Form (5 cols) + Right List (7 cols) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+      <!-- LEFT COLUMN: CREATE / EDIT FORM -->
+      <section class="lg:col-span-5 admin-panel p-6 sm:p-7 lg:sticky lg:top-24" aria-labelledby="form-mode-title">
+        <div class="pb-4 mb-5 border-b-2 border-sumi/15 flex items-start justify-between gap-3">
+          <div>
+            <h2 id="form-mode-title" class="font-heading font-black text-xl text-sumi uppercase">Tambah Menu Baru</h2>
+            <p id="form-mode-subtitle" class="text-xs text-sumi/75 mt-1">Data baru dikirim langsung ke POST http://localhost:3000/menus.</p>
+          </div>
+          <span class="font-kanji text-xs font-bold text-aka-deep border-2 border-aka-deep px-2 py-0.5 rounded-md" lang="ja">登録</span>
+        </div>
+
+        <!-- Backend / Validation Error Box -->
+        <div id="form-error-box" class="hidden mb-5 p-4 rounded-xl bg-[#FDE8E4] border-2 border-aka-deep text-[#7A1806] text-xs" role="alert">
+          <strong id="form-error-title" class="font-heading font-extrabold block mb-1.5 uppercase"></strong>
+          <ul id="form-error-list" class="list-disc pl-5 space-y-1"></ul>
+        </div>
+
+        <form id="menu-form" class="space-y-4" novalidate>
+          <div>
+            <label for="menu-name" class="block text-xs font-heading font-extrabold uppercase tracking-wider text-sumi mb-1.5">
+              Nama Menu <span class="text-aka-deep">*</span>
+            </label>
+            <input type="text" id="menu-name" name="name" class="admin-input" placeholder="Contoh: Chicken Katsu Don" required>
+            <p class="text-[11px] text-sumi/65 mt-1">Minimal 3 karakter dan harus unik (tidak duplikat).</p>
+          </div>
+
+          <div>
+            <label for="menu-description" class="block text-xs font-heading font-extrabold uppercase tracking-wider text-sumi mb-1.5">
+              Deskripsi Menu <span class="text-aka-deep">*</span>
+            </label>
+            <textarea id="menu-description" name="description" class="admin-textarea" placeholder="Jelaskan bahan utama, kuah, atau cita rasa hidangan..." required></textarea>
+            <p class="text-[11px] text-sumi/65 mt-1">Minimal 10 karakter sesuai aturan DTO backend.</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="menu-price" class="block text-xs font-heading font-extrabold uppercase tracking-wider text-sumi mb-1.5">
+                Harga (Rp) <span class="text-aka-deep">*</span>
+              </label>
+              <input type="number" id="menu-price" name="price" class="admin-input" placeholder="45000" min="1000" step="500" required>
+            </div>
+
+            <div>
+              <label for="menu-category" class="block text-xs font-heading font-extrabold uppercase tracking-wider text-sumi mb-1.5">
+                Kategori <span class="text-aka-deep">*</span>
+              </label>
+              <select id="menu-category" name="category" class="admin-select" required>
+                <option value="Ramen">Ramen</option>
+                <option value="Sushi">Sushi</option>
+                <option value="Donburi">Donburi</option>
+                <option value="Matcha">Matcha</option>
+                <option value="Minuman">Minuman</option>
+                <option value="Sampingan">Sampingan</option>
+                <option value="Dessert">Dessert</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="pt-1">
+            <label for="menu-available" class="min-h-[44px] flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-white border-2 border-sumi/20 cursor-pointer">
+              <input type="checkbox" id="menu-available" name="isAvailable" class="w-5 h-5 accent-[#20358F]" checked>
+              <span class="text-sm font-semibold text-sumi">Menu tersedia untuk dipesan (isAvailable)</span>
+            </label>
+          </div>
+
+          <div class="pt-2 flex flex-wrap gap-3">
+            <button type="submit" id="btn-submit-menu" class="admin-btn admin-btn-primary flex-1">
+              Tambah Menu (POST)
+            </button>
+            <button type="button" id="btn-cancel-edit" class="admin-btn admin-btn-secondary hidden">
+              Batal Edit
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- RIGHT COLUMN: LIVE MENU LIST -->
+      <section class="lg:col-span-7 admin-panel p-6 sm:p-7" aria-labelledby="list-section-title">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 mb-5 border-b-2 border-sumi/15">
+          <div>
+            <h2 id="list-section-title" class="font-heading font-black text-xl text-sumi uppercase">Daftar Menu Aktif</h2>
+            <p id="list-result-count" class="text-xs text-sumi/75 mt-0.5">Memuat data dari backend...</p>
+          </div>
+          <button type="button" id="btn-refresh-menus" class="admin-btn admin-btn-secondary text-xs self-start sm:self-auto">
+            Muat Ulang (GET)
+          </button>
+        </div>
+
+        <!-- Search & Category Filter Controls -->
+        <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 mb-6">
+          <div class="sm:col-span-7">
+            <label for="search-menu" class="sr-only">Cari menu</label>
+            <input type="search" id="search-menu" class="admin-input" placeholder="Cari nama menu atau deskripsi...">
+          </div>
+          <div class="sm:col-span-5">
+            <label for="filter-category" class="sr-only">Filter kategori</label>
+            <select id="filter-category" class="admin-select">
+              <option value="ALL">Semua Kategori</option>
+              <option value="Ramen">Ramen</option>
+              <option value="Sushi">Sushi</option>
+              <option value="Donburi">Donburi</option>
+              <option value="Matcha">Matcha</option>
+              <option value="Minuman">Minuman</option>
+              <option value="Sampingan">Sampingan</option>
+              <option value="Dessert">Dessert</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="list-loading-state" class="py-12 flex flex-col items-center justify-center gap-3 text-center" role="status" aria-live="polite">
+          <div class="admin-spinner" aria-hidden="true"></div>
+          <p class="text-sm font-heading font-bold text-sumi">Mengambil data menu dari NestJS...</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="list-error-state" class="hidden p-6 rounded-xl bg-[#FDE8E4] border-2 border-aka-deep text-[#7A1806] text-center space-y-3" role="alert">
+          <strong class="font-heading font-black text-base block">Gagal Memuat Daftar Menu</strong>
+          <p id="list-error-text" class="text-xs sm:text-sm leading-relaxed"></p>
+          <button type="button" id="btn-retry-load" class="admin-btn admin-btn-primary text-xs">
+            Coba Muat Ulang
+          </button>
+        </div>
+
+        <!-- Empty State -->
+        <div id="list-empty-state" class="hidden py-12 px-4 text-center rounded-xl border-2 border-dashed border-sumi/25 bg-washi/60">
+          <p class="font-heading font-extrabold text-base text-sumi">Belum ada menu yang cocok.</p>
+          <p class="text-xs text-sumi/70 mt-1">Tambahkan menu baru melalui formulir di samping atau ubah kata kunci pencarian.</p>
+        </div>
+
+        <!-- Dynamic Menu Cards Container -->
+        <div id="admin-menu-list" class="hidden space-y-4"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ================= DELETE CONFIRMATION DIALOG ================= -->
+  <dialog id="delete-confirm-dialog" class="admin-dialog" aria-labelledby="delete-dialog-title">
+    <div class="p-6">
+      <h3 id="delete-dialog-title" class="font-heading font-black text-lg text-sumi uppercase">Konfirmasi Hapus Menu</h3>
+      <p class="text-sm text-sumi/80 mt-2 leading-relaxed">
+        Anda yakin ingin menghapus <strong id="delete-target-name" class="text-aka-deep"></strong> dari backend NestJS?
+      </p>
+      <div class="mt-6 flex flex-wrap justify-end gap-3">
+        <button type="button" id="btn-cancel-delete" class="admin-btn admin-btn-secondary">Batal</button>
+        <button type="button" id="btn-confirm-delete" class="admin-btn admin-btn-primary">Ya, Hapus Menu</button>
+      </div>
+    </div>
+  </dialog>
+
+  <footer class="w-full bg-sumi text-washi py-6 px-5 sm:px-8 lg:px-12 mt-12 border-t-2 border-sumi">
+    <div class="mx-auto w-full max-w-screen-2xl flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-washi/75">
+      <p>MACHI Japanese Restaurant (Senopati) | Dashboard Administrasi Menu</p>
+      <span class="font-kanji text-karashi font-bold" lang="ja">町 • NestJS MVC API</span>
+    </div>
+  </footer>
+
+  <script src="./js/admin-menu.js"></script>
+</body>
+</html>
