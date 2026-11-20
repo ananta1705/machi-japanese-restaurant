@@ -1,0 +1,59 @@
+### A. GET seluruh menu
+GET http://localhost:3000/menus
+Accept: application/json
+
+### B. GET detail menu (ID 1)
+GET http://localhost:3000/menus/1
+Accept: application/json
+
+### C. POST tambah menu baru
+# @name createMenu
+POST http://localhost:3000/menus
+Content-Type: application/json
+
+{
+  "name": "Chicken Katsu Don",
+  "description": "Japanese rice bowl with crispy chicken katsu",
+  "price": 42000,
+  "category": "Donburi",
+  "isAvailable": true
+}
+
+### D. PATCH ubah menu (gunakan ID hasil POST di atas, default 5 pada server baru)
+PATCH http://localhost:3000/menus/5
+Content-Type: application/json
+
+{
+  "price": 45000,
+  "isAvailable": false
+}
+
+### E. DELETE menu (gunakan ID hasil POST di atas, default 5 pada server baru)
+DELETE http://localhost:3000/menus/5
+
+### F. Uji NotFoundException (404)
+GET http://localhost:3000/menus/999
+Accept: application/json
+
+### G. Uji ConflictException (409 - nama menu duplikat)
+POST http://localhost:3000/menus
+Content-Type: application/json
+
+{
+  "name": "Signature Tonkotsu Ramen",
+  "description": "Duplicate menu test with a valid description",
+  "price": 45000,
+  "category": "Ramen",
+  "isAvailable": true
+}
+
+### H. Uji validasi DTO (400 - input tidak valid)
+POST http://localhost:3000/menus
+Content-Type: application/json
+
+{
+  "name": "A",
+  "description": "Short",
+  "price": 500,
+  "category": "Unknown"
+}
