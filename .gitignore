@@ -1,4 +1,5 @@
 node_modules/
+backend/dist/
 .gemini/
 .DS_Store
 Thumbs.db
