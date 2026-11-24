@@ -1,5 +1,24 @@
+# Dependencies & Build Artifacts
 node_modules/
 backend/dist/
+backend/data/
+*.tsbuildinfo
+
+# AI Agent, Skills & Prompt Rules
 .gemini/
+.agent/
+.claude/
+skills/
+GEMINI.md
+AGENTS.md
+CLAUDE.md
+
+# Local Docs, Reports & Praktikum Files
+doc/
+docs/
+frontend/doc/
+AUDIT_SISTEM.md
+
+# OS Junk
 .DS_Store
 Thumbs.db
